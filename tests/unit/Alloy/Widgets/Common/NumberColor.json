@@ -1,0 +1,21 @@
+[
+    {
+        "in": [152],
+        "html": "<span class=\"positive\">152</span>",
+        "plain": "152"
+    },
+    {
+        "in": [-80],
+        "html": "<span class=\"negative\">-80</span>",
+        "plain": "-80"
+    },
+    {
+        "in": [0],
+        "html": "<span class=\"zero\">0</span>",
+        "plain": "0"
+    },
+    {
+        "in": [0, -1, true],
+        "html": "<span class=\"positive\">0</span>"
+    }
+]

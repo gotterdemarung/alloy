@@ -1,0 +1,17 @@
+[
+    {
+        "in": ["http://coub.com/embed/557l1v80", 400, 250],
+        "plain": "http://coub.com/view/557l1v80",
+        "html": "<iframe src=\"http://coub.com/embed/557l1v80?muted=false&autostart=false&noSiteButtons=false&hideTopBar=false&startWithHD=false\" allowfullscreen=\"true\" frameborder=\"0\" width=\"400\" height=\"250\"></iframe>"
+    },
+    {
+        "in": ["id", 100, 450],
+        "plain": "http://coub.com/view/id",
+        "html": "<iframe src=\"http://coub.com/embed/id?muted=false&autostart=false&noSiteButtons=false&hideTopBar=false&startWithHD=false\" allowfullscreen=\"true\" frameborder=\"0\" width=\"100\" height=\"450\"></iframe>"
+    },
+    {
+        "in": ["id", 200, 200, true, true, true, true],
+        "html": "<iframe src=\"http://coub.com/embed/id?muted=true&autostart=true&noSiteButtons=true&hideTopBar=true&startWithHD=false\" allowfullscreen=\"true\" frameborder=\"0\" width=\"200\" height=\"200\"></iframe>"
+    }
+
+]
