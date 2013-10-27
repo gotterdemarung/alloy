@@ -18,10 +18,7 @@ spl_autoload_register(
         // Including folder
         include __DIR__
             . '/src/'
-            . substr(
-                str_replace('\\', '/', $className),
-                strlen(__NAMESPACE__) + 1
-            )
+            . str_replace('\\', '/', $className)
             . '.php';
     }
 );
