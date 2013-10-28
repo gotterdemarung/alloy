@@ -1,6 +1,6 @@
 <?php
 
-namespace Alloy\Tests\Web;
+namespace Alloy\Tests\Web\Dict;
 
 use Alloy\Tests\unit\AlloyTest;
 use Alloy\Web\Dict\HTTPStatusCodes;
