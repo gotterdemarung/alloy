@@ -1,15 +1,15 @@
 <?php
 
-namespace PHPocket\Web\Headers;
-use PHPocket\Common\SimpleJSONInterface;
-use PHPocket\Web\SendableInterface;
+namespace Alloy\Web\Headers;
+use Alloy\Core\ToJSONInterface;
+use Alloy\Core\SendableInterface;
 
 /**
  * Base class for all headers
  *
- * @package PHPocket\Web\Headers
+ * @package Alloy\Web\Headers
  */
-abstract class AbstractHeader implements SimpleJSONInterface, SendableInterface
+abstract class AbstractHeader implements ToJSONInterface, SendableInterface
 {
     private static $_cliMode = null;
 
@@ -144,7 +144,7 @@ abstract class AbstractHeader implements SimpleJSONInterface, SendableInterface
      *
      * @return string
      */
-    public function toSimpleJSON()
+    public function toJSON()
     {
         return '{"' . $this->getType() . '":' . $this->_escapeValueJSON() . '}';
     }

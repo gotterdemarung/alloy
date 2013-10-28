@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\DI;
+namespace PHPocket\Tests\Di;
 
 
-use PHPocket\DI\Configurator;
+use Alloy\Di\Configurator;
+use Alloy\Tests\unit\AlloyTest;
 
-class ConfiguratorTest extends \PHPUnit_Framework_TestCase
+class ConfiguratorTest extends AlloyTest
 {
     public function testCommonPropertiesSet()
     {

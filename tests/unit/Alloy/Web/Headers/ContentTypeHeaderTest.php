@@ -1,10 +1,11 @@
 <?php
-namespace PHPocket\Tests\Web\Headers;
+namespace Alloy\Tests\Web\Headers;
 
 
-use PHPocket\Web\Headers\ContentTypeHeader;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Web\Headers\ContentTypeHeader;
 
-class ContentTypeHeaderTest extends \PHPUnit_Framework_TestCase
+class ContentTypeHeaderTest extends AlloyTest
 {
 
     public function testConstructor()

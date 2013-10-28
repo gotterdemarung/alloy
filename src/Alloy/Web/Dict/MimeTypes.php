@@ -1,10 +1,10 @@
 <?php
-namespace PHPocket\Web;
+namespace Alloy\Web\Dict;
 
 /**
  * Library of common MIME types
  *
- * @package PHPocket\Web
+ * @package Alloy\Web\Dict
  */
 class MimeTypes
 {

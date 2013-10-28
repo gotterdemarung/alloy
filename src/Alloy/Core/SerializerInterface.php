@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Serialize;
+namespace Alloy\Core;
 
 /**
  * Base interface for all serializers

@@ -1,10 +1,11 @@
 <?php
 
-namespace PHPocket\Tests\Random;
+namespace Alloy\Tests\Random;
 
-use PHPocket\Random\Mersenne;
+use Alloy\Random\Mersenne;
+use Alloy\Tests\unit\AlloyTest;
 
-class MersenneTest extends \PHPUnit_Framework_TestCase
+class MersenneTest extends AlloyTest
 {
     const ITERATIONS_LIMIT = 10;
 

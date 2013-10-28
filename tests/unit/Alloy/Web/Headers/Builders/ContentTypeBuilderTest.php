@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Tests\Web\Headers\Builders;
+namespace Alloy\Tests\Web\Headers\Builders;
 
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Web\Headers\Builders\ContentTypeBuilder;
 
-use PHPocket\Web\Headers\Builders\ContentTypeBuilder;
-
-class ContentTypeBuilderTest extends \PHPUnit_Framework_TestCase
+class ContentTypeBuilderTest extends AlloyTest
 {
 
     public function testExceptFiles()

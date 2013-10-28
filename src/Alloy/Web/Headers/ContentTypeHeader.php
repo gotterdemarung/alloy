@@ -1,14 +1,11 @@
 <?php
 
-namespace PHPocket\Web\Headers;
-
-use asd,
-    sadas;
+namespace Alloy\Web\Headers;
 
 /**
  * Object representing content-type header
  *
- * @package PHPocket\Web\Headers;
+ * @package Alloy\Web\Headers;
  */
 class ContentTypeHeader extends AbstractHeader
 {

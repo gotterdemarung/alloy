@@ -1,12 +1,12 @@
 <?php
 
-namespace PHPocket\Random;
+namespace Alloy\Random;
 
 /**
  * Class Mersenne
  * A random generator based on standard PHP functions mt_rand
  *
- * @package PHPocket\Random
+ * @package Alloy\Random
  */
 class Mersenne implements RandomInterface
 {

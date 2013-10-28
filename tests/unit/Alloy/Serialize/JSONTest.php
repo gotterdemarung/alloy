@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\Serialize;
+namespace Alloy\Tests\Serialize;
 
 
-use PHPocket\Serialize\JSON;
+use Alloy\Serialize\JSON;
+use Alloy\Tests\unit\AlloyTest;
 
-class JSONTest extends \PHPUnit_Framework_TestCase
+class JSONTest extends AlloyTest
 {
 
     public function testPackCommon()

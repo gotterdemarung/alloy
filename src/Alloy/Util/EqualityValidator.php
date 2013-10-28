@@ -1,12 +1,12 @@
 <?php
-namespace PHPocket\Util;
-use PHPocket\Common\EqualsInterface;
+namespace Alloy\Util;
+use Alloy\Core\EqualsInterface;
 
 /**
  * Utility class for checking that provided
  * arguments are equal
  *
- * @package PHPocket\Util
+ * @package Alloy\Util
  */
 class EqualityValidator implements EqualsInterface
 {

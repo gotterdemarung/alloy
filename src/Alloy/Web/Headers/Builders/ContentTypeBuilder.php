@@ -1,9 +1,9 @@
 <?php
-namespace PHPocket\Web\Headers\Builders;
+namespace Alloy\Web\Headers\Builders;
 
 
-use PHPocket\Web\Headers\ContentTypeHeader;
-use PHPocket\Web\MimeTypes;
+use Alloy\Web\Headers\ContentTypeHeader;
+use Alloy\Web\Dict\MimeTypes;
 
 /**
  * Utility class for building common headers

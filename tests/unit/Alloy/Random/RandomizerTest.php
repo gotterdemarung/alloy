@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\Random;
+namespace Alloy\Tests\Random;
 
 
-use PHPocket\Random\Randomizer;
+use Alloy\Random\Randomizer;
+use Alloy\Tests\unit\AlloyTest;
 
-class RandomizerTest extends \PHPUnit_Framework_TestCase
+class RandomizerTest extends AlloyTest
 {
     const ITERATIONS_LIMIT = 10;
 

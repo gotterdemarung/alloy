@@ -1,9 +1,9 @@
 <?php
-namespace PHPocket\Random;
+namespace Alloy\Random;
 
 /**
  * Interface for all random generators
- * @package PHPocket\Random
+ * @package Alloy\Random
  */
 interface RandomInterface
 {

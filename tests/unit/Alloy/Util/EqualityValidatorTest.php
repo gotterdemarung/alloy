@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\Util;
+namespace Alloy\Tests\Util;
 
-use PHPocket\Common\EqualsInterface;
-use PHPocket\Util\EqualityValidator;
+use Alloy\Core\EqualsInterface;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Util\EqualityValidator;
 
-class EqualityValidatorTest extends \PHPUnit_Framework_TestCase
+class EqualityValidatorTest extends AlloyTest
 {
 
     public function testEquals()

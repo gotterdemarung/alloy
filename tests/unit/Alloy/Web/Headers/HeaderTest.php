@@ -1,10 +1,11 @@
 <?php
-namespace PHPocket\Tests\Web\Headers;
+namespace Alloy\Tests\Web\Headers;
 
 
-use PHPocket\Web\Headers\Header;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Web\Headers\Header;
 
-class HeaderTest extends \PHPUnit_Framework_TestCase
+class HeaderTest extends AlloyTest
 {
     public function testConstructorAndGetters()
     {
@@ -43,8 +44,8 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
     public function testJSON()
     {
         $x = new Header('Location ', 'http://google.com');
-        $this->assertSame('{"Location":"http://google.com"}', $x->toSimpleJSON());
+        $this->assertSame('{"Location":"http://google.com"}', $x->toJSON());
         $x = new Header('Content-Type ', null);
-        $this->assertSame('{"Content-Type":null}', $x->toSimpleJSON());
+        $this->assertSame('{"Content-Type":null}', $x->toJSON());
     }
 }

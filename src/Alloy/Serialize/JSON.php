@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Serialize;
+namespace Alloy\Serialize;
+use Alloy\Core\SerializerInterface;
 
 /**
  * JSON serializer
  *
- * @package PHPocket\Serialize
+ * @package Alloy\Serialize
  */
 class JSON implements SerializerInterface
 {

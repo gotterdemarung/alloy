@@ -1,10 +1,10 @@
 <?php
-namespace PHPocket\Web\Headers;
+namespace Alloy\Web\Headers;
 
 /**
  * Class for any custom header
  *
- * @package PHPocket\Web\Headers
+ * @package Alloy\Web\Headers
  */
 class Header extends AbstractHeader
 {

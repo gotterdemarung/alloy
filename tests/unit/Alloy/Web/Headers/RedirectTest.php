@@ -1,10 +1,11 @@
 <?php
-namespace PHPocket\Tests\Web\Headers;
+namespace Alloy\Tests\Web\Headers;
 
 
-use PHPocket\Web\Headers\Redirect;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Web\Headers\Redirect;
 
-class RedirectTest extends \PHPUnit_Framework_TestCase
+class RedirectTest extends AlloyTest
 {
 
     public function testConstructor()

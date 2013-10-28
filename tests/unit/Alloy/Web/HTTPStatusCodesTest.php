@@ -1,10 +1,11 @@
 <?php
 
-namespace PHPocket\Tests\Web;
+namespace Alloy\Tests\Web;
 
-use PHPocket\Web\HTTPStatusCodes;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Web\Dict\HTTPStatusCodes;
 
-class HTTPStatusCodesTest extends \PHPUnit_Framework_TestCase
+class HTTPStatusCodesTest extends AlloyTest
 {
 
     public function testSomeEntries()

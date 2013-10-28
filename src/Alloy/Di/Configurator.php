@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPocket\DI;
+namespace Alloy\Di;
 
-use PHPocket\Type\HashMap;
+use Alloy\Type\HashMap;
 
 /**
  * Tiny configurator, that can fill object properties
@@ -12,7 +12,7 @@ use PHPocket\Type\HashMap;
  * it not exits looks for setProperty
  *
  *
- * @package PHPocket\DI
+ * @package Alloy\DI
  */
 class Configurator
 {

@@ -1,13 +1,13 @@
 <?php
-namespace PHPocket\Web\Headers;
-use PHPocket\Actions\RunnableInterface;
-use PHPocket\Actions\SafeAction;
+namespace Alloy\Web\Headers;
+use Alloy\Actions\RunnableInterface;
+use Alloy\Actions\SafeAction;
 
 /**
  * Implementation of header Location
  * Can shutdown script if needed
  *
- * @package PHPocket\Web\Headers
+ * @package Alloy\Web\Headers
  */
 class Redirect extends AbstractHeader
 {

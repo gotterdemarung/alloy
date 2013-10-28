@@ -1,5 +1,5 @@
 <?php
-namespace PHPocket\Random;
+namespace Alloy\Random;
 
 /**
  * Randomizer, that provides nice functions for various cases
@@ -7,7 +7,7 @@ namespace PHPocket\Random;
  * is responsible for providing randomness
  *
  *
- * @package PHPocket\Random
+ * @package Alloy\Random
  */
 class Randomizer implements RandomInterface
 {
