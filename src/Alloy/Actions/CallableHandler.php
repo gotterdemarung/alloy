@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Actions;
+namespace Alloy\Actions;
 
 /**
  * Wrapper for PHP's callables
  *
- * @package Actions
+ * @package Alloy\Actions
  */
 class CallableHandler implements HandlerInterface
 {

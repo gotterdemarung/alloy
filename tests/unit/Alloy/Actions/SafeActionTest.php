@@ -3,11 +3,13 @@
 namespace PHPocket\Tests\Actions;
 
 
-use PHPocket\Actions\HandlerInterface;
-use PHPocket\Actions\RunnableInterface;
-use PHPocket\Actions\SafeAction;
+use Alloy\Actions\HandlerInterface;
+use Alloy\Actions\RunnableInterface;
+use Alloy\Actions\SafeAction;
+use Alloy\Tests\unit\AlloyTest;
 
-class SafeActionTest extends \PHPUnit_Framework_TestCase {
+class SafeActionTest extends AlloyTest
+{
 
     public function testSafe()
     {

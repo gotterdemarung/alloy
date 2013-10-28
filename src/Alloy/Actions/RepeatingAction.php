@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Actions;
+namespace Alloy\Actions;
 
 /**
  * Wrapper to actions, which must be executed several times
  *
- * @package Actions
+ * @package Alloy\Actions
  */
 class RepeatingAction extends Action
 {

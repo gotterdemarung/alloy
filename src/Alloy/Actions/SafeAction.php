@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Actions;
+namespace Alloy\Actions;
 
 /**
  * Safely executes a main action (RunnableInterface) and after then
@@ -12,7 +12,7 @@ namespace PHPocket\Actions;
  * * if no handler set, suppresses an error, but terminates main action and
  *  do not run onSuccess action
  *
- * @package PHPocket\Actions
+ * @package Alloy\Actions
  */
 class SafeAction implements RunnableInterface
 {

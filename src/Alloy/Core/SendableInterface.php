@@ -1,12 +1,12 @@
 <?php
 
-namespace PHPocket\Web;
+namespace Alloy\Core;
 
 /**
  * Any class, implementing this interface, must be able to send
  * it's contents to output using echo, print or similar methods
  *
- * @package PHPocket\Web
+ * @package Alloy\Core
  */
 interface SendableInterface
 {

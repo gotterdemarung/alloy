@@ -3,9 +3,10 @@
 namespace PHPocket\Tests\Actions;
 
 
-use PHPocket\Actions\RepeatingAction;
+use Alloy\Actions\RepeatingAction;
+use Alloy\Tests\unit\AlloyTest;
 
-class RepeatingActionTest extends \PHPUnit_Framework_TestCase
+class RepeatingActionTest extends AlloyTest
 {
 
     // Callable to test

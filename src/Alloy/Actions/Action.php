@@ -1,12 +1,12 @@
 <?php
 
-namespace PHPocket\Actions;
+namespace Alloy\Actions;
 
 /**
  * Wrapper for any callable
  * Implements runnable interface
  *
- * @package Actions
+ * @package Alloy\Actions
  */
 class Action implements RunnableInterface
 {

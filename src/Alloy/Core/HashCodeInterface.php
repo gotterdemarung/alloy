@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Core;
+namespace Alloy\Core;
 
 /**
  * Interface HashCodeInterface
  *
- * @package PHPocket\Core
+ * @package Alloy\Core
  */
 interface HashCodeInterface
 {

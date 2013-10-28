@@ -1,11 +1,11 @@
 <?php
-namespace PHPocket\Core;
+namespace Alloy\Core;
 
 /**
  * Any object, providing equals(Object another) method
  * must implement this interface
  *
- * @package PHPocket\Common
+ * @package Alloy\Core
  */
 interface EqualsInterface
 {

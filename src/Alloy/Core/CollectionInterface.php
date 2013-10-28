@@ -1,12 +1,12 @@
 <?php
 
-namespace PHPocket\Core;
+namespace Alloy\Core;
 
 /**
  * Any collection must implement this interface
  *
  *
- * @package PHPocket\Common
+ * @package Alloy\Common
  */
 interface CollectionInterface extends
     \Countable,

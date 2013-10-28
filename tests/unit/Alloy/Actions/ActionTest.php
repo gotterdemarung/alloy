@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\Actions;
+namespace Alloy\Tests\Actions;
 
-use PHPocket\Actions\Action;
-use PHPocket\Actions\RunnableInterface;
+use Alloy\Actions\Action;
+use Alloy\Actions\RunnableInterface;
+use Alloy\Tests\unit\AlloyTest;
 
-class ActionTest extends \PHPUnit_Framework_TestCase
+class ActionTest extends AlloyTest
 {
 
     // Callable to test

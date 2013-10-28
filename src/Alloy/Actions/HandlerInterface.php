@@ -1,11 +1,11 @@
 <?php
-namespace PHPocket\Actions;
+namespace Alloy\Actions;
 
 /**
  * Classes, implementing interface, must handle received argument
  * and return an answer
  *
- * @package Actions
+ * @package Alloy\Actions
  */
 interface HandlerInterface
 {
