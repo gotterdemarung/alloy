@@ -20,12 +20,16 @@ class IDIntTest extends IDTest
         try{
             $x = new IDInt('10a');
             $this->fail('Expecting exception');
-        } catch(\Exception $e){}
+        } catch(\Exception $e){
+            $this->assertTrue(true);
+        }
 
         try{
             $x = new IDInt(0.1);
             $this->fail('Expecting exception');
-        } catch(\Exception $e){}
+        } catch(\Exception $e){
+            $this->assertTrue(true);
+        }
     }
 
 }

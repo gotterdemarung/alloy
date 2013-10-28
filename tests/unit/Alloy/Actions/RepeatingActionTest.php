@@ -25,11 +25,15 @@ class RepeatingActionTest extends AlloyTest
         try {
             $x = new RepeatingAction(null, 0, null);
             $this->fail();
-        } catch( \Exception $e ){}
+        } catch( \Exception $e ){
+            $this->assertTrue(true);
+        }
         try {
             $x = new RepeatingAction(null, -1, null);
             $this->fail();
-        } catch( \Exception $e ){}
+        } catch( \Exception $e ){
+            $this->assertTrue(true);
+        }
 
     }
 

@@ -17,23 +17,33 @@ class IDTest extends AlloyTest
         try{
             $x = new ID('');
             $this->fail('Expecting exception');
-        } catch (\Exception $e){}
+        } catch (\Exception $e){
+            $this->assertTrue(true);
+        }
         try{
             $x = new ID(0);
             $this->fail('Expecting exception');
-        } catch (\Exception $e){}
+        } catch (\Exception $e){
+            $this->assertTrue(true);
+        }
         try{
             $x = new ID(null);
             $this->fail('Expecting exception');
-        } catch (\Exception $e){}
+        } catch (\Exception $e){
+            $this->assertTrue(true);
+        }
         try{
             $x = new ID(true);
             $this->fail('Expecting exception');
-        } catch (\Exception $e){}
+        } catch (\Exception $e){
+            $this->assertTrue(true);
+        }
         try{
             $x = new ID(false);
             $this->fail('Expecting exception');
-        } catch (\Exception $e){}
+        } catch (\Exception $e){
+            $this->assertTrue(true);
+        }
     }
 
     public function testCheck()

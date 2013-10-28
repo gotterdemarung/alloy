@@ -26,15 +26,21 @@ class ActionTest extends AlloyTest
         try {
             $x = new Action(5);
             $this->fail('Must throw exception');
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+        }
         try {
             $x = new Action(new InnerNotRunnable());
             $this->fail('Must throw exception');
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+        }
         try {
             $x = new Action('');
             $this->fail('Must throw exception');
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+        }
     }
 
     public function testCallable()
