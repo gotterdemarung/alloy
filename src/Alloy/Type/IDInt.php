@@ -1,11 +1,16 @@
 <?php
 
-namespace PHPocket\Type;
+namespace Alloy\Type;
 
-
+/**
+ * Special subtype of ID, allowing to use integer
+ * id values only
+ *
+ *
+ * @package Alloy\Type
+ */
 class IDInt extends ID
 {
-
     /**
      * Constructs an IDInt object
      *
@@ -49,7 +54,4 @@ class IDInt extends ID
     {
         return $this->getValue();
     }
-
-
-
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\Type;
+namespace Alloy\Tests\Type;
 
 
-use PHPocket\Type\HashMap;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Type\HashMap;
 
-class HashMapTest extends \PHPUnit_Framework_TestCase
+class HashMapTest extends AlloyTest
 {
 
     public function testConstructor()

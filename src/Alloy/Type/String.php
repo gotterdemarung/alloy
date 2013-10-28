@@ -1,6 +1,8 @@
 <?php
 
-namespace PHPocket\Type;
+namespace Alloy\Type;
+
+use Alloy\Core\TypeInterface;
 
 /**
  * Java & c# style wrapper for PHP strings
@@ -8,10 +10,9 @@ namespace PHPocket\Type;
  * UTF-8
  * This object is immutable
  *
- * @overhead 0/2
- * @package PHPocket\String
+ * @package Alloy\Type
  */
-class String implements CustomTypeInterface,\Countable
+class String implements TypeInterface,\Countable
 {
     const EMPTYSTRING = '';
     const INTERNAL_ENCODING = 'UTF-8';
@@ -34,15 +35,11 @@ class String implements CustomTypeInterface,\Countable
     /**
      * Constructs a String object
      *
-     * @param string $initial
-     * @param null   $encoding
-     * @throws \Exception
+     * @param string      $initial
+     * @param string|null $encoding
      */
     public function __construct( $initial = '', $encoding = null )
     {
-        if (!function_exists('mb_convert_encoding')) {
-            throw new \Exception('Multibyte extension is required');
-        }
         if (empty($initial)) {
             $this->_string = self::EMPTYSTRING;
         } else if ($initial instanceof String) {

@@ -1,20 +1,21 @@
 <?php
 
-namespace PHPocket\Type;
+namespace Alloy\Type;
 
 
-use PHPocket\Common\CollectionInterface;
-use PHPocket\Common\EqualsInterface;
+use Alloy\Core\CollectionInterface;
+use Alloy\Core\TypeInterface;
+use Alloy\Core\EqualsInterface;
 
 /**
  * Hash map implementation for PHP
  * Provides immutability except array access operations
  *
- * @package PHPocket\Type
+ * @package Alloy\Type
  */
 class HashMap implements
     \IteratorAggregate,
-    CustomTypeInterface,
+    TypeInterface,
     CollectionInterface
 {
 

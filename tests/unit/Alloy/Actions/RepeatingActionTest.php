@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Tests\Actions;
+namespace Alloy\Tests\Actions;
 
 
 use Alloy\Actions\RepeatingAction;

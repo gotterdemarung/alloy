@@ -1,5 +1,7 @@
 <?php
-namespace PHPocket\Type;
+namespace Alloy\Type;
+
+use Alloy\Core\TypeInterface;
 
 /**
  * Special type to handle all IDs
@@ -8,9 +10,9 @@ namespace PHPocket\Type;
  *
  * This object is immutable
  *
- * @package PHPocket\Type
+ * @package Alloy\Core
  */
-class ID implements CustomTypeInterface
+class ID implements TypeInterface
 {
     /**
      * Private special constant
@@ -47,7 +49,7 @@ class ID implements CustomTypeInterface
      */
     static public function getNew()
     {
-        $id = new self( 1 );
+        $id = new self(1);
         $id->_id = null;
         $id->_special = self::$_new;
 

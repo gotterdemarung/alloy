@@ -1,10 +1,10 @@
 <?php
-namespace PHPocket\Tests\Type;
+namespace Alloy\Tests\Type;
 
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Type\String;
 
-use PHPocket\Type\String;
-
-class StringTest extends \PHPUnit_Framework_TestCase
+class StringTest extends AlloyTest
 {
 
     public function testConstructor()

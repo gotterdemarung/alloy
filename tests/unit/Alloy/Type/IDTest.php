@@ -1,10 +1,11 @@
 <?php
 
-namespace PHPocket\Tests\Type;
+namespace Alloy\Tests\Type;
 
-use PHPocket\Type\ID;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Type\ID;
 
-class IDTest extends \PHPUnit_Framework_TestCase
+class IDTest extends AlloyTest
 {
 
     public function testConstructor()

@@ -1,8 +1,7 @@
 <?php
-namespace PHPocket\Tests\Type;
+namespace Alloy\Tests\Type;
 
-
-use PHPocket\Type\IDInt;
+use Alloy\Type\IDInt;
 
 class IDIntTest extends IDTest
 {
