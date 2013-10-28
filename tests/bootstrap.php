@@ -10,8 +10,12 @@ spl_autoload_register(
             return;
         }
         include __DIR__
-            . '/unit/'
-            . str_replace('\\', '/', $className)
+            . '/unit/Alloy/'
+            . str_replace(
+                '\\',
+                '/',
+                substr($className, strlen(__NAMESPACE__))
+            )
             . '.php';
     }
 );
