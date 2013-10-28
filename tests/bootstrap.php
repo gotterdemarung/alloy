@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Widgets\Tests;
+namespace Alloy\Tests;
 
 // Registering own tests autoloader
 spl_autoload_register(
@@ -11,16 +11,14 @@ spl_autoload_register(
         }
         include __DIR__
             . '/unit/'
-            . substr(
-                str_replace('\\', '/', $className),
-                strlen(__NAMESPACE__) + 1
-            )
+            . str_replace('\\', '/', $className)
             . '.php';
     }
 );
 
-// Loading abstract class
-include_once __DIR__ . '/AbstractWidgetTest.php';
+// Loading abstract classes
+include_once __DIR__ . '/unit/AlloyTest.php';
+include_once __DIR__ . '/unit/Alloy/Widgets/AbstractWidgetTest.php';
 
 // Loading widgets autoloader
 require __DIR__ . '/../autoload.php';

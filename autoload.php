@@ -10,15 +10,14 @@ spl_autoload_register(
         if (substr($className, 0, strlen(__NAMESPACE__)) !== __NAMESPACE__) {
             return;
         }
-        // Excluding tests
-        if (strpos($className, __NAMESPACE__ . '\\Tests') === 0) {
-            return;
-        }
 
         // Including folder
-        include __DIR__
+        $filename = __DIR__
             . '/src/'
             . str_replace('\\', '/', $className)
             . '.php';
+        if (file_exists($filename)) {
+            include $filename;
+        }
     }
 );
