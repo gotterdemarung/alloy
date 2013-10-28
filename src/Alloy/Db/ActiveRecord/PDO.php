@@ -146,8 +146,8 @@ class PDO implements \IteratorAggregate, ActiveRecordInterface
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Retrieve an external iterator
      * @link http://php.net/manual/en/iteratoraggregate.getiterator.php
-     * @return \Traversable An instance of an object implementing <b>Iterator</b> or
-     * <b>Traversable</b>
+     * @return \Traversable An instance of an object implementing
+     * <b>Iterator</b> or <b>Traversable</b>
      */
     public function getIterator()
     {
@@ -241,7 +241,7 @@ class PDO implements \IteratorAggregate, ActiveRecordInterface
         if ($this->getID()->isEmpty()) {
             throw new \BadMethodCallException('Active record is empty');
         }
-        foreach ($this->_data as $k => $v){
+        foreach ($this->_data as $k => $v) {
             if ($v instanceof EqualsInterface) {
                 if ($v->equals($value)) {
                     return true;

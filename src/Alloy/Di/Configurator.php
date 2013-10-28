@@ -125,7 +125,7 @@ class Configurator
     protected function _applyOnSetters($object, HashMap $config)
     {
         $notProcessed = new HashMap();
-        foreach($config as $attribute=>$argument) {
+        foreach ($config as $attribute=>$argument) {
             $methodNameSet = 'set' . strtoupper($attribute[0]);
             $methodNameSet .= substr($attribute, 1);
             $methodNameAdd = 'add' . substr($methodNameSet, 3);
@@ -155,7 +155,7 @@ class Configurator
     protected function _applyOnProperties($object, HashMap $config)
     {
         $notProcessed = new HashMap();
-        foreach($config as $attribute=>$argument) {
+        foreach ($config as $attribute=>$argument) {
             if (property_exists($object, $attribute)) {
                 // Setting
                 $object->$attribute = $argument;

@@ -7,7 +7,10 @@ use Alloy\Core\EqualsInterface;
 use Alloy\Core\IDInterface;
 use Alloy\Type\ID;
 
-interface ActiveRecordInterface extends IDInterface, EqualsInterface, CollectionInterface
+interface ActiveRecordInterface extends
+    IDInterface,
+    EqualsInterface,
+    CollectionInterface
 {
     /**
      * Save the changes (not all fields, just changes)

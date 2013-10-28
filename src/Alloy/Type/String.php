@@ -478,7 +478,10 @@ class String implements TypeInterface,\Countable
         if ( $this->isEmpty() ) {
             return $this;
         }
-        return new self(\mb_strtolower($this->_string, self::INTERNAL_ENCODING));
+        return new self(\mb_strtolower(
+            $this->_string,
+            self::INTERNAL_ENCODING
+        ));
     }
 
     /**
@@ -491,7 +494,10 @@ class String implements TypeInterface,\Countable
         if ( $this->isEmpty() ) {
             return $this;
         }
-        return new self(\mb_strtoupper($this->_string, self::INTERNAL_ENCODING));
+        return new self(\mb_strtoupper(
+            $this->_string,
+            self::INTERNAL_ENCODING
+        ));
     }
 
     /**
