@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Widgets;
+namespace Alloy\Widgets;
 
 
 interface WidgetInterface

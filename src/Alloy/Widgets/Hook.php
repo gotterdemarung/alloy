@@ -1,14 +1,14 @@
 <?php
 
-namespace PHPocket\Widgets;
+namespace Alloy\Widgets;
 
-use PHPocket\Widgets\Documents\Document;
+use Alloy\Widgets\Documents\Document;
 
 /**
  * Base class for all hooks
  *
  *
- * @package PHPocket\Widgets
+ * @package Alloy\Widgets
  */
 abstract class Hook extends Widget
 {

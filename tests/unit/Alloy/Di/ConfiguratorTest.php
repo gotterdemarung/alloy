@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Tests\Di;
+namespace Alloy\Tests\Di;
 
 
 use Alloy\Di\Configurator;

@@ -1,16 +1,16 @@
 <?php
 
-namespace PHPocket\Widgets\Documents;
+namespace Alloy\Widgets\Documents;
 
-use PHPocket\Widgets\Documents\Components\Data;
-use PHPocket\Widgets\Hook;
-use PHPocket\Widgets\Widget;
+use Alloy\Widgets\Documents\Components\Data;
+use Alloy\Widgets\Hook;
+use Alloy\Widgets\Widget;
 
 /**
  * Base document
  * Used as content storage
  *
- * @package PHPocket\Widgets\Documents
+ * @package Alloy\Widgets\Documents
  */
 class Document extends Widget
 {

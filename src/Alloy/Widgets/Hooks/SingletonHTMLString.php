@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPocket\Widgets\Hooks;
+namespace Alloy\Widgets\Hooks;
 
-use PHPocket\Widgets\Hook;
+use Alloy\Widgets\Hook;
 
 /**
  * Class SingletonHTMLString
@@ -11,7 +11,7 @@ use PHPocket\Widgets\Hook;
  * Useful, when you're using widgets, that refers to scripts
  * Allows to include script once
  *
- * @package PHPocket\Widgets\Hooks
+ * @package Alloy\Widgets\Hooks
  */
 class SingletonHTMLString extends Hook
 {

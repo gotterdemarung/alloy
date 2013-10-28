@@ -1,13 +1,13 @@
 <?php
 
-namespace PHPocket\Widgets\Common;
+namespace Alloy\Widgets\Common;
 
-use PHPocket\Widgets\Widget;
+use Alloy\Widgets\Widget;
 
 /**
  * Widget for numbers with provided precision
  *
- * @package PHPocket\Widgets
+ * @package Alloy\Widgets\Common
  */
 class Number extends Widget
 {

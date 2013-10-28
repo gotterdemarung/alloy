@@ -1,9 +1,9 @@
 <?php
 
-namespace PHPocket\Widgets\Twitter;
+namespace Alloy\Widgets\Twitter;
 
-use PHPocket\Widgets\Hooks\SingletonHTMLString;
-use PHPocket\Widgets\Widget;
+use Alloy\Widgets\Hooks\SingletonHTMLString;
+use Alloy\Widgets\Widget;
 
 class TimeLine extends Widget
 {

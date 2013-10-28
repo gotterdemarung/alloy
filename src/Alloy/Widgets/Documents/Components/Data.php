@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Widgets\Documents\Components;
+namespace Alloy\Widgets\Documents\Components;
 
 /**
  * Utility class for data storing
  *
- * @package PHPocket\Widgets\Documents\Components
+ * @package Alloy\Widgets\Documents\Components
  */
 class Data implements \Countable
 {

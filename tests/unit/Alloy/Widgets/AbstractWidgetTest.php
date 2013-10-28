@@ -1,16 +1,17 @@
 <?php
 
-namespace PHPocket\Widgets\Tests;
+namespace Alloy\Tests\Widgets;
 
-use PHPocket\Widgets\WidgetInterface;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Widgets\WidgetInterface;
 
 /**
  * Class WidgetTest
  * Base class for all widget tests
  *
- * @package PHPocket\Widgets\Tests
+ * @package Alloy\Widgets\Tests
  */
-abstract class AbstractWidgetTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractWidgetTest extends AlloyTest
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Widgets;
+namespace Alloy\Widgets;
 
 /**
  * Static container for current global display context
@@ -10,7 +10,7 @@ namespace PHPocket\Widgets;
  *
  * Also provides nice helpers for other widgets
  *
- * @package PHPocket\Widgets
+ * @package Alloy\Widgets
  */
 abstract class Widget implements WidgetInterface
 {

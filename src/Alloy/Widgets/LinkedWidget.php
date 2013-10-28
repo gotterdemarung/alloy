@@ -1,13 +1,13 @@
 <?php
 
-namespace PHPocket\Widgets;
+namespace Alloy\Widgets;
 
 /**
  * Class LinkedWidget
  * Represents widget, which depends on another widgets, used on same
  * presentation level
  *
- * @package PHPocket\Widgets
+ * @package Alloy\Widgets
  */
 abstract class LinkedWidget extends Widget
 {

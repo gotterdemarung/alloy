@@ -1,15 +1,15 @@
 <?php
 
-namespace PHPocket\Widgets\Video;
+namespace Alloy\Widgets\Video;
 
 
-use PHPocket\Widgets\Widget;
+use Alloy\Widgets\Widget;
 
 /**
  * Widget for embedding Coub videos
  * {@link http://coub.com/}
  *
- * @package PHPocket\Widgets\Video
+ * @package Alloy\Widgets\Video
  */
 class Coub extends Widget
 {

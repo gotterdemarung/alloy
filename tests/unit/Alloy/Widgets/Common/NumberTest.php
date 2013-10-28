@@ -1,10 +1,10 @@
 <?php
 
-namespace PHPocket\Widgets\Tests\Common;
+namespace Alloy\Tests\Widgets\Common;
 
 
-use PHPocket\Widgets\Common\Number;
-use PHPocket\Widgets\Tests\AbstractWidgetTest;
+use Alloy\Widgets\Common\Number;
+use Alloy\Tests\Widgets\AbstractWidgetTest;
 
 class NumberTest extends AbstractWidgetTest
 {

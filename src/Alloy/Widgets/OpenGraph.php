@@ -1,5 +1,5 @@
 <?php
-namespace PHPocket\Widgets;
+namespace Alloy\Widgets;
 
 /**
  * Opengraph builder for page
@@ -9,7 +9,7 @@ namespace PHPocket\Widgets;
  * @link    http://ogp.me/
  * @link    http://help.yandex.ru/webmaster/video/open-graph-markup.xml
  *
- * @package PHPocket\Widgets
+ * @package Alloy\Widgets
  */
 class OpenGraph extends Widget
 {

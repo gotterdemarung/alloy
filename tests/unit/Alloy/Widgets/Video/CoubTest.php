@@ -1,9 +1,9 @@
 <?php
 
-namespace PHPocket\Widgets\Tests\Video;
+namespace Alloy\Tests\Widgets\Video;
 
-use PHPocket\Widgets\Tests\AbstractWidgetTest;
-use PHPocket\Widgets\Video\Coub;
+use Alloy\Tests\Widgets\AbstractWidgetTest;
+use Alloy\Widgets\Video\Coub;
 
 class CoubTest extends AbstractWidgetTest
 {
@@ -27,7 +27,7 @@ class CoubTest extends AbstractWidgetTest
     {
         $this->assertTpl(
             __DIR__ . '/Coub.json',
-            'PHPocket\Widgets\Video\Coub'
+            'Alloy\Widgets\Video\Coub'
         );
     }
 

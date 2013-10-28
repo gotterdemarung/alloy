@@ -1,8 +1,7 @@
 <?php
-namespace PHPocket\Widgets\Tests\Common;
+namespace Alloy\Tests\Widgets\Common;
 
-
-use PHPocket\Widgets\Common\NumberColor;
+use Alloy\Widgets\Common\NumberColor;
 
 class NumberColorTest extends NumberTest
 {
@@ -10,7 +9,7 @@ class NumberColorTest extends NumberTest
     {
         $this->assertTpl(
             __DIR__ . '/NumberColor',
-            'PHPocket\Widgets\Common\NumberColor'
+            'Alloy\Widgets\Common\NumberColor'
         );
     }
 

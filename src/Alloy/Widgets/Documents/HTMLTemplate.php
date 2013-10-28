@@ -1,12 +1,12 @@
 <?php
 
-namespace PHPocket\Widgets\Documents;
+namespace Alloy\Widgets\Documents;
 
 /**
  * Templated HTML Document
  *
  *
- * @package PHPocket\Widgets\Documents
+ * @package Alloy\Widgets\Documents
  */
 class HTMLTemplate extends Document
 {

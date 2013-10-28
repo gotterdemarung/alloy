@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Widgets\Common;
+namespace Alloy\Widgets\Common;
 
 /**
  * Widget for colorized numbers
  *
- * @package PHPocket\Widgets
+ * @package Alloy\Widgets\Common
  */
 class NumberColor extends Number
 {

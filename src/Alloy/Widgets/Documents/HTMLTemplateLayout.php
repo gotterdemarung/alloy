@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPocket\Widgets\Documents;
+namespace Alloy\Widgets\Documents;
 
 
 class HTMLTemplateLayout extends HTMLTemplate
