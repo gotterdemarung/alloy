@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPocket\Data\ActiveRecord;
+namespace Alloy\Db\ActiveRecord;
 
-use PHPocket\Common\CollectionInterface;
-use PHPocket\Common\EqualsInterface;
-use PHPocket\Common\IDInterface;
-use PHPocket\Type\ID;
+use Alloy\Core\CollectionInterface;
+use Alloy\Core\EqualsInterface;
+use Alloy\Core\IDInterface;
+use Alloy\Type\ID;
 
 interface ActiveRecordInterface extends IDInterface, EqualsInterface, CollectionInterface
 {

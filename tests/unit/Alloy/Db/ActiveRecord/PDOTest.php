@@ -1,11 +1,12 @@
 <?php
 
-namespace PHPocket\Tests\Data\ActiveRecord;
+namespace Alloy\Tests\Db\ActiveRecord;
 
-use PHPocket\Data\ActiveRecord\PDO;
-use PHPocket\Type\ID;
+use Alloy\Tests\unit\AlloyTest;
+use Alloy\Db\ActiveRecord\PDO;
+use Alloy\Type\ID;
 
-class PDOTest extends \PHPUnit_Framework_TestCase
+class PDOTest extends AlloyTest
 {
     private $_pdo;
 

@@ -1,17 +1,16 @@
 <?php
 
-namespace PHPocket\Data\ActiveRecord;
+namespace Alloy\Db\ActiveRecord;
 
 use \PDO as Provider;
-use PHPocket\Common\EqualsInterface;
-use PHPocket\Type\ID;
-use Traversable;
+use Alloy\Core\EqualsInterface;
+use Alloy\Type\ID;
 
 /**
  * Lightweight ActiveRecord for PDO extension
  * No validators, just plain SQL works
  *
- * @package PHPocket\Data\ActiveRecord
+ * @package Alloy\Db\ActiveRecord
  */
 class PDO implements \IteratorAggregate, ActiveRecordInterface
 {
@@ -33,14 +32,25 @@ class PDO implements \IteratorAggregate, ActiveRecordInterface
      * @var array|null
      */
     protected $_data = null;
+
     /**
      * Changes made to active record data
      * @var array
      */
     protected $_changes = array();
 
+    /**
+     * Schema name
+     *
+     * @var string
+     */
     protected $_tableName;
 
+    /**
+     * Name of primary key
+     *
+     * @var string
+     */
     protected $_idFieldName;
 
     /**
@@ -136,7 +146,7 @@ class PDO implements \IteratorAggregate, ActiveRecordInterface
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Retrieve an external iterator
      * @link http://php.net/manual/en/iteratoraggregate.getiterator.php
-     * @return Traversable An instance of an object implementing <b>Iterator</b> or
+     * @return \Traversable An instance of an object implementing <b>Iterator</b> or
      * <b>Traversable</b>
      */
     public function getIterator()
