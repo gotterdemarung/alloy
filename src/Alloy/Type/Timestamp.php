@@ -13,7 +13,7 @@ use Alloy\Core\TypeInterface;
  * @todo tests needed
  * @package Alloy\Type
  */
-class TimestampPrecise implements TypeInterface, ToJSONInterface
+class Timestamp implements TypeInterface, ToJSONInterface
 {
     /**
      * Value of timestamp
@@ -59,7 +59,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
      * Returns current time
      *
      * @param int $precision
-     * @return TimestampPrecise
+     * @return Timestamp
      */
     static public function now($precision = 6)
     {
@@ -69,7 +69,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
     /**
      * Constructor
      *
-     * @param int|float|string|\DateTime|TimestampPrecise $value
+     * @param int|float|string|\DateTime|Timestamp $value
      * @param int|null                                    $precision
      *
      * @throws \InvalidArgumentException
@@ -94,7 +94,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
         } else if (is_float($value) || is_double($value) || is_int($value)) {
             // Plain numeric timestamp
             $this->_value = (float) $value;
-        } else if ($value instanceof TimestampPrecise) {
+        } else if ($value instanceof Timestamp) {
             // Own type
             $this->_value = $value->_value;
             if ($precision === null) {
@@ -131,8 +131,8 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
         if ($object === null) {
             return false;
         }
-        if (!($object instanceof TimestampPrecise)) {
-            $object = new TimestampPrecise($object);
+        if (!($object instanceof Timestamp)) {
+            $object = new Timestamp($object);
         }
 
         return $this->_value == $object->_value;
@@ -152,7 +152,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
     /**
      * Returns new TimestampPrecise, representing begin of day
      *
-     * @return TimestampPrecise
+     * @return Timestamp
      */
     public function getDayBegin()
     {
@@ -171,7 +171,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
     /**
      * Returns new TimestampPrecise, representing end of day
      *
-     * @return TimestampPrecise
+     * @return Timestamp
      */
     public function getDayEnd()
     {
@@ -271,7 +271,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
     /**
      * Returns true if current object timestamp bigger then provided
      *
-     * @param mixed|TimestampPrecise $object
+     * @param mixed|Timestamp $object
      * @return bool
      */
     public function isBiggerThen($object)
@@ -283,7 +283,7 @@ class TimestampPrecise implements TypeInterface, ToJSONInterface
     /**
      * Returns true this current object timestamp lesser then provided
      *
-     * @param mixed|TimestampPrecise $object
+     * @param mixed|Timestamp $object
      * @return bool
      */
     public function isLesserThen($object)
