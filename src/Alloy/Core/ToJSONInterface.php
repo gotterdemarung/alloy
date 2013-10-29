@@ -12,6 +12,12 @@ namespace Alloy\Core;
 interface ToJSONInterface
 {
 
+    /**
+     * Returns JSON representation of object
+     * Should be simplest as possible
+     *
+     * @return string
+     */
     public function toJSON();
 
 }
