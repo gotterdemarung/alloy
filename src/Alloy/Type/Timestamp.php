@@ -90,7 +90,7 @@ class Timestamp implements TypeInterface, ToJSONInterface
 
         // Validating value
         if (empty($value)) {
-            $this->_value = 0;
+            $this->_value = 0.0;
         } else if (is_float($value) || is_double($value) || is_int($value)) {
             // Plain numeric timestamp
             $this->_value = (float) $value;
@@ -103,14 +103,24 @@ class Timestamp implements TypeInterface, ToJSONInterface
             }
         } else if ($value instanceof \DateTime) {
             // PHP DateTime object
-            $this->_value = $value->getTimestamp();
+            $this->_value = (float) $value->getTimestamp();
         } else if (self::isValidStringTimeStamp($value)) {
             // String representation
             $this->_value = (float) $value;
         } else {
             // strtotime
-            $this->_value =strtotime($value);
+            $this->_value = (float) strtotime($value);
         }
+
+        $this->_trim();
+    }
+
+    /**
+     * Trims value to expected precision
+     */
+    protected function _trim()
+    {
+        $this->_value = (float) $this->getString();
     }
 
     /**
@@ -264,7 +274,7 @@ class Timestamp implements TypeInterface, ToJSONInterface
         if ($precision === 0) {
             return (string) intval($this->_value);
         } else {
-            return sprintf("$.{$precision}f", $this->_value);
+            return sprintf("%.{$precision}f", $this->_value);
         }
     }
 
