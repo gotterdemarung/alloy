@@ -241,16 +241,16 @@ class PDO implements \IteratorAggregate, IActiveRecord
         if ($this->getID()->isEmpty()) {
             throw new \BadMethodCallException('Active record is empty');
         }
-        foreach ($this->_data as $k => $v) {
-            if ($v instanceof IEquals) {
-                if ($v->equals($value)) {
+        foreach ($this->_data as $row) {
+            if ($row instanceof IEquals) {
+                if ($row->equals($value)) {
                     return true;
                 }
             } elseif ($value instanceof IEquals) {
-                if ($value->equals($v)) {
+                if ($value->equals($row)) {
                     return true;
                 }
-            } elseif ($v == $value) {
+            } elseif ($row == $value) {
                 return true;
             }
         }
