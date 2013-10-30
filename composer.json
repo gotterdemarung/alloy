@@ -13,5 +13,10 @@
         "phpunit/PHPUnit": "3.7.*",
         "squizlabs/php_codesniffer": "1.*",
         "phpmd/phpmd": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Alloy\\": "src/"
+        }
     }
 }
