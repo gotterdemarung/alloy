@@ -7,7 +7,7 @@ namespace Alloy\Actions;
  *
  * @package Alloy\Actions
  */
-class CallableHandler implements HandlerInterface
+class CallableHandler implements IHandler
 {
 
     /**

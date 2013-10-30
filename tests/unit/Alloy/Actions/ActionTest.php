@@ -3,7 +3,7 @@
 namespace Alloy\Tests\Actions;
 
 use Alloy\Actions\Action;
-use Alloy\Actions\RunnableInterface;
+use Alloy\Actions\IRunnable;
 use Alloy\Tests\unit\AlloyTest;
 
 class ActionTest extends AlloyTest
@@ -81,7 +81,7 @@ class ActionTest extends AlloyTest
     }
 }
 
-class InnerRunnable implements RunnableInterface
+class InnerRunnable implements IRunnable
 {
 
     public $i = 0;

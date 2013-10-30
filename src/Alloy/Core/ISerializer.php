@@ -5,7 +5,7 @@ namespace Alloy\Core;
 /**
  * Base interface for all serializers
  */
-interface SerializerInterface
+interface ISerializer
 {
     /**
      * Serializes $data into the string

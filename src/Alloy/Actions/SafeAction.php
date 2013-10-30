@@ -14,32 +14,32 @@ namespace Alloy\Actions;
  *
  * @package Alloy\Actions
  */
-class SafeAction implements RunnableInterface
+class SafeAction implements IRunnable
 {
 
     /**
-     * @var RunnableInterface
+     * @var IRunnable
      */
     protected $_action;
     /**
-     * @var HandlerInterface
+     * @var IHandler
      */
     protected $_onException;
     /**
-     * @var RunnableInterface
+     * @var IRunnable
      */
     protected $_onNoError;
 
     /**
      * Creates safe action executor
      *
-     * @param RunnableInterface      $action      Main action
-     * @param HandlerInterface       $onException Handler to run on error
-     * @param RunnableInterface|null $onSuccess   Action must run on finish
+     * @param IRunnable      $action      Main action
+     * @param IHandler       $onException Handler to run on error
+     * @param IRunnable|null $onSuccess   Action must run on finish
      */
-    public function __construct(RunnableInterface $action,
-        HandlerInterface $onException = null,
-        RunnableInterface $onSuccess = null
+    public function __construct(IRunnable $action,
+        IHandler $onException = null,
+        IRunnable $onSuccess = null
     )
     {
         $this->_action = $action;

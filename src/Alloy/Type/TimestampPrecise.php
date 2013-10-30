@@ -3,7 +3,7 @@
 namespace Alloy\Type;
 
 
-use Alloy\Core\ToJSONInterface;
+use Alloy\Core\IToJSON;
 use Alloy\Core\TypeInterface;
 
 /**
@@ -13,7 +13,7 @@ use Alloy\Core\TypeInterface;
  * @todo tests needed
  * @package Alloy\Type
  */
-class TimestampPrecise implements TypeInterface, ToJSONInterface
+class TimestampPrecise implements TypeInterface, IToJSON
 {
     /**
      * Value of timestamp

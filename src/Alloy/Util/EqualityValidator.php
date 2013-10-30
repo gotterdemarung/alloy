@@ -1,6 +1,6 @@
 <?php
 namespace Alloy\Util;
-use Alloy\Core\EqualsInterface;
+use Alloy\Core\IEquals;
 
 /**
  * Utility class for checking that provided
@@ -8,7 +8,7 @@ use Alloy\Core\EqualsInterface;
  *
  * @package Alloy\Util
  */
-class EqualityValidator implements EqualsInterface
+class EqualityValidator implements IEquals
 {
 
     /**
@@ -62,10 +62,10 @@ class EqualityValidator implements EqualsInterface
             return false;
         }
 
-        if (is_object($a) && $a instanceof EqualsInterface) {
+        if (is_object($a) && $a instanceof IEquals) {
             return $a->equals($b);
         }
-        if (is_object($b) && $b instanceof EqualsInterface) {
+        if (is_object($b) && $b instanceof IEquals) {
             return $b->equals($a);
         }
 

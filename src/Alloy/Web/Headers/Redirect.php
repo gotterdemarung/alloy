@@ -1,6 +1,6 @@
 <?php
 namespace Alloy\Web\Headers;
-use Alloy\Actions\RunnableInterface;
+use Alloy\Actions\IRunnable;
 use Alloy\Actions\SafeAction;
 
 /**
@@ -20,7 +20,7 @@ class Redirect extends AbstractHeader
      */
     protected $_finish;
     /**
-     * @var RunnableInterface
+     * @var IRunnable
      */
     protected $_callback;
 
@@ -97,7 +97,7 @@ class Redirect extends AbstractHeader
      * Setups function, which must be called on script shutdown
      * caused by sending header
      *
-     * @param callable|RunnableInterface $callbackOrRunnable
+     * @param callable|IRunnable $callbackOrRunnable
      * @return void
      */
     public function setBeforeShutdownCallback($callbackOrRunnable)

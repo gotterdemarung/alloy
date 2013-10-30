@@ -12,7 +12,7 @@ interface CollectionInterface extends
     \Countable,
     \ArrayAccess,
     \Traversable,
-    EqualsInterface
+    IEquals
 {
 
     /**

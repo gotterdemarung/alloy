@@ -8,7 +8,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Core
  */
-interface SendableInterface
+interface ISendable
 {
     /**
      * Sends contents of object to output

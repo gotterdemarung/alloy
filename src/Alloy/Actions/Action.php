@@ -8,17 +8,17 @@ namespace Alloy\Actions;
  *
  * @package Alloy\Actions
  */
-class Action implements RunnableInterface
+class Action implements IRunnable
 {
     /**
-     * @var callable[]|RunnableInterface[]
+     * @var callable[]|IRunnable[]
      */
     private $_callable = array();
 
     /**
      * Creates an action for callable or runnable
      *
-     * @param callable|RunnableInterface $callableOrRunnable
+     * @param callable|IRunnable $callableOrRunnable
      * @throws \InvalidArgumentException on invalid or null data
      */
     public function __construct($callableOrRunnable = null)
@@ -31,7 +31,7 @@ class Action implements RunnableInterface
     /**
      * Add an action to execution pool
      *
-     * @param callable|RunnableInterface $callableOrRunnable
+     * @param callable|IRunnable $callableOrRunnable
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -45,7 +45,7 @@ class Action implements RunnableInterface
         }
         if (
             !is_callable($callableOrRunnable)
-            && !($callableOrRunnable instanceof RunnableInterface)
+            && !($callableOrRunnable instanceof IRunnable)
         ) {
             throw new
             \InvalidArgumentException(
@@ -67,7 +67,7 @@ class Action implements RunnableInterface
             return;
         }
         foreach ($this->_callable as $action) {
-            if ($action instanceof RunnableInterface) {
+            if ($action instanceof IRunnable) {
                 $action->run();
             } else {
                 call_user_func($action);

@@ -5,7 +5,7 @@ namespace Alloy\Type;
 
 use Alloy\Core\CollectionInterface;
 use Alloy\Core\TypeInterface;
-use Alloy\Core\EqualsInterface;
+use Alloy\Core\IEquals;
 
 /**
  * Hash map implementation for PHP
@@ -101,7 +101,7 @@ class HashMap implements
                     // Key not exists
                     return false;
                 }
-                if ($v instanceof EqualsInterface) {
+                if ($v instanceof IEquals) {
                     if (!$v->equals($object[$k])) {
                         // Values not equal
                         return false;
@@ -146,7 +146,7 @@ class HashMap implements
      */
     public function containsValue($value)
     {
-        if ($value instanceof EqualsInterface) {
+        if ($value instanceof IEquals) {
             foreach ($this as $row) {
                 if ($value->equals($row)) {
                     return true;
