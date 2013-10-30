@@ -2,7 +2,7 @@
 
 namespace Alloy\Db\ActiveRecord;
 
-use Alloy\Core\CollectionInterface;
+use Alloy\Core\ICollection;
 use Alloy\Core\IEquals;
 use Alloy\Core\IID;
 use Alloy\Type\ID;
@@ -10,7 +10,7 @@ use Alloy\Type\ID;
 interface IActiveRecord extends
     IID,
     IEquals,
-    CollectionInterface
+    ICollection
 {
     /**
      * Save the changes (not all fields, just changes)

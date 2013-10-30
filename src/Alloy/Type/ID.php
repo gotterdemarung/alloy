@@ -1,7 +1,7 @@
 <?php
 namespace Alloy\Type;
 
-use Alloy\Core\TypeInterface;
+use Alloy\Core\IType;
 
 /**
  * Special type to handle all IDs
@@ -12,7 +12,7 @@ use Alloy\Core\TypeInterface;
  *
  * @package Alloy\Core
  */
-class ID implements TypeInterface
+class ID implements IType
 {
     /**
      * Private special constant

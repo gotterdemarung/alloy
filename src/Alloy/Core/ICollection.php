@@ -8,7 +8,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Common
  */
-interface CollectionInterface extends
+interface ICollection extends
     \Countable,
     \ArrayAccess,
     \Traversable,

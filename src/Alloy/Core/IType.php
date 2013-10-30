@@ -8,7 +8,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Core
  */
-interface TypeInterface extends IEquals
+interface IType extends IEquals
 {
 
 }

@@ -3,8 +3,8 @@
 namespace Alloy\Type;
 
 
-use Alloy\Core\CollectionInterface;
-use Alloy\Core\TypeInterface;
+use Alloy\Core\ICollection;
+use Alloy\Core\IType;
 use Alloy\Core\IEquals;
 
 /**
@@ -15,8 +15,8 @@ use Alloy\Core\IEquals;
  */
 class HashMap implements
     \IteratorAggregate,
-    TypeInterface,
-    CollectionInterface
+    IType,
+    ICollection
 {
 
     /**
