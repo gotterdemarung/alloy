@@ -8,7 +8,7 @@ namespace Alloy\Random;
  *
  * @package Alloy\Random
  */
-class Mersenne implements RandomInterface
+class Mersenne implements IRandom
 {
 
 

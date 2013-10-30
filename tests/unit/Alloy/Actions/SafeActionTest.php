@@ -3,8 +3,8 @@
 namespace Alloy\Tests\Actions;
 
 
-use Alloy\Actions\HandlerInterface;
-use Alloy\Actions\RunnableInterface;
+use Alloy\Actions\IHandler;
+use Alloy\Actions\IRunnable;
 use Alloy\Actions\SafeAction;
 use Alloy\Tests\unit\AlloyTest;
 
@@ -67,7 +67,7 @@ abstract class InnerByRefCounter
     }
 }
 
-class InnerSafeActionProcessor extends InnerByRefCounter implements RunnableInterface
+class InnerSafeActionProcessor extends InnerByRefCounter implements IRunnable
 {
     private $throw;
 
@@ -87,7 +87,7 @@ class InnerSafeActionProcessor extends InnerByRefCounter implements RunnableInte
     }
 }
 
-class InnerSafeActionFinish extends InnerByRefCounter implements RunnableInterface
+class InnerSafeActionFinish extends InnerByRefCounter implements IRunnable
 {
     public function run()
     {
@@ -96,7 +96,7 @@ class InnerSafeActionFinish extends InnerByRefCounter implements RunnableInterfa
 }
 
 
-class InnerSafeActionErrorHandler extends InnerByRefCounter implements HandlerInterface
+class InnerSafeActionErrorHandler extends InnerByRefCounter implements IHandler
 {
     /**
      * Receives data and handles it

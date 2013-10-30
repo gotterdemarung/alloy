@@ -7,7 +7,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Core
  */
-interface HashCodeInterface
+interface IHashCode
 {
     /**
      * Returns integer hash code

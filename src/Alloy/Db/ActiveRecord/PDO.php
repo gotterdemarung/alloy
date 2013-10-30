@@ -3,7 +3,7 @@
 namespace Alloy\Db\ActiveRecord;
 
 use \PDO as Provider;
-use Alloy\Core\EqualsInterface;
+use Alloy\Core\IEquals;
 use Alloy\Type\ID;
 
 /**
@@ -12,7 +12,7 @@ use Alloy\Type\ID;
  *
  * @package Alloy\Db\ActiveRecord
  */
-class PDO implements \IteratorAggregate, ActiveRecordInterface
+class PDO implements \IteratorAggregate, IActiveRecord
 {
     /**
      * @var Provider
@@ -242,11 +242,11 @@ class PDO implements \IteratorAggregate, ActiveRecordInterface
             throw new \BadMethodCallException('Active record is empty');
         }
         foreach ($this->_data as $k => $v) {
-            if ($v instanceof EqualsInterface) {
+            if ($v instanceof IEquals) {
                 if ($v->equals($value)) {
                     return true;
                 }
-            } elseif ($value instanceof EqualsInterface) {
+            } elseif ($value instanceof IEquals) {
                 if ($value->equals($v)) {
                     return true;
                 }

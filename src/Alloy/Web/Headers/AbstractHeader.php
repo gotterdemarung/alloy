@@ -1,15 +1,15 @@
 <?php
 
 namespace Alloy\Web\Headers;
-use Alloy\Core\ToJSONInterface;
-use Alloy\Core\SendableInterface;
+use Alloy\Core\IToJSON;
+use Alloy\Core\ISendable;
 
 /**
  * Base class for all headers
  *
  * @package Alloy\Web\Headers
  */
-abstract class AbstractHeader implements ToJSONInterface, SendableInterface
+abstract class AbstractHeader implements IToJSON, ISendable
 {
     private static $_cliMode = null;
 

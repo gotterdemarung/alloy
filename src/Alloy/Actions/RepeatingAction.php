@@ -16,7 +16,7 @@ class RepeatingAction extends Action
     /**
      * Creates an action for callable or runnable
      *
-     * @param callable|RunnableInterface $callableOrRunnable callback to run
+     * @param callable|IRunnable $callableOrRunnable callback to run
      * @param int                        $repeatCount        amount of runs
      * @param float|double|int|null      $sleepInSeconds     sleep between runs
      *

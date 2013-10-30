@@ -12,7 +12,7 @@ namespace Alloy\Widgets;
  *
  * @package Alloy\Widgets
  */
-abstract class Widget implements WidgetInterface
+abstract class Widget implements IWidget
 {
 
     /**
@@ -45,7 +45,7 @@ abstract class Widget implements WidgetInterface
     {
         if (empty(self::$_currentGlobalContext)) {
             // Autodetect & force HTML
-            self::$_currentGlobalContext = WidgetInterface::HTML_FULL;
+            self::$_currentGlobalContext = IWidget::HTML_FULL;
         }
 
         return self::$_currentGlobalContext;

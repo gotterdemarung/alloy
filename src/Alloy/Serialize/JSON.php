@@ -1,14 +1,14 @@
 <?php
 
 namespace Alloy\Serialize;
-use Alloy\Core\SerializerInterface;
+use Alloy\Core\ISerializer;
 
 /**
  * JSON serializer
  *
  * @package Alloy\Serialize
  */
-class JSON implements SerializerInterface
+class JSON implements ISerializer
 {
 
     protected $_useUTFCleaner;

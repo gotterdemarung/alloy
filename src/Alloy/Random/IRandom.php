@@ -5,7 +5,7 @@ namespace Alloy\Random;
  * Interface for all random generators
  * @package Alloy\Random
  */
-interface RandomInterface
+interface IRandom
 {
 
 

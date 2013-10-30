@@ -9,23 +9,23 @@ namespace Alloy\Random;
  *
  * @package Alloy\Random
  */
-class Randomizer implements RandomInterface
+class Randomizer implements IRandom
 {
     /**
      * Randomness provider
      *
-     * @var RandomInterface
+     * @var IRandom
      */
     protected $_random = null;
 
     /**
      * Constructor
      *
-     * @param RandomInterface|null $randomProvider <p>
+     * @param IRandom|null $randomProvider <p>
      * if provided, uses object as randomness provider
      * </p>
      */
-    public function __construct(RandomInterface $randomProvider = null)
+    public function __construct(IRandom $randomProvider = null)
     {
         if ($randomProvider !== null) {
             $this->setRandomProvider($randomProvider);
@@ -35,9 +35,9 @@ class Randomizer implements RandomInterface
     /**
      * Sets internal randomness provider
      *
-     * @param RandomInterface $randomProvider
+     * @param IRandom $randomProvider
      */
-    public function setRandomProvider(RandomInterface $randomProvider)
+    public function setRandomProvider(IRandom $randomProvider)
     {
         $this->_random = $randomProvider;
     }
@@ -45,7 +45,7 @@ class Randomizer implements RandomInterface
     /**
      * Returns randomness provider
      *
-     * @return RandomInterface
+     * @return IRandom
      */
     public function getRandomProvider()
     {

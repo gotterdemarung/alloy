@@ -2,7 +2,7 @@
 
 namespace Alloy\Tests\Util;
 
-use Alloy\Core\EqualsInterface;
+use Alloy\Core\IEquals;
 use Alloy\Tests\unit\AlloyTest;
 use Alloy\Util\EqualityValidator;
 
@@ -92,7 +92,7 @@ class EqualityValidatorTest extends AlloyTest
     }
 }
 
-class MockEq implements EqualsInterface
+class MockEq implements IEquals
 {
     public $x;
     public $y;

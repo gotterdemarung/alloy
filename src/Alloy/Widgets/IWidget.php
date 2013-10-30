@@ -3,7 +3,7 @@
 namespace Alloy\Widgets;
 
 
-interface WidgetInterface
+interface IWidget
 {
     const PLAINTEXT       = 10;
 

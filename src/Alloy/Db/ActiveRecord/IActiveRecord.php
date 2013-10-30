@@ -2,15 +2,15 @@
 
 namespace Alloy\Db\ActiveRecord;
 
-use Alloy\Core\CollectionInterface;
-use Alloy\Core\EqualsInterface;
-use Alloy\Core\IDInterface;
+use Alloy\Core\ICollection;
+use Alloy\Core\IEquals;
+use Alloy\Core\IID;
 use Alloy\Type\ID;
 
-interface ActiveRecordInterface extends
-    IDInterface,
-    EqualsInterface,
-    CollectionInterface
+interface IActiveRecord extends
+    IID,
+    IEquals,
+    ICollection
 {
     /**
      * Save the changes (not all fields, just changes)

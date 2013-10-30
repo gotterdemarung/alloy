@@ -7,7 +7,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Core
  */
-interface EqualsInterface
+interface IEquals
 {
     /**
      * Compares itself to $object and return true if

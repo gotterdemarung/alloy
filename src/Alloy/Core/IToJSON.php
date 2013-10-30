@@ -9,7 +9,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Core
  */
-interface ToJSONInterface
+interface IToJSON
 {
 
     /**

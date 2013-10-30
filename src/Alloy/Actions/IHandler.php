@@ -7,7 +7,7 @@ namespace Alloy\Actions;
  *
  * @package Alloy\Actions
  */
-interface HandlerInterface
+interface IHandler
 {
     /**
      * Receives data and handles it

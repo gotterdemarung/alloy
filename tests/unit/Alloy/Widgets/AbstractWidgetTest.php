@@ -3,7 +3,7 @@
 namespace Alloy\Tests\Widgets;
 
 use Alloy\Tests\unit\AlloyTest;
-use Alloy\Widgets\WidgetInterface;
+use Alloy\Widgets\IWidget;
 
 /**
  * Class WidgetTest
@@ -68,7 +68,7 @@ abstract class AbstractWidgetTest extends AlloyTest
             if (isset($assert['html'])) {
                 $this->assertSame(
                     $assert['html'],
-                    $instance->getValue(WidgetInterface::HTML_FULL),
+                    $instance->getValue(IWidget::HTML_FULL),
                     'HTML assert failed at ' . $index . ' in ' . $baseName
                 );
             }
@@ -77,7 +77,7 @@ abstract class AbstractWidgetTest extends AlloyTest
             if (isset($assert['plain'])) {
                 $this->assertSame(
                     $assert['plain'],
-                    $instance->getValue(WidgetInterface::PLAINTEXT),
+                    $instance->getValue(IWidget::PLAINTEXT),
                     'Plaintext assert failed at ' . $index . ' in ' . $baseName
                 );
             }

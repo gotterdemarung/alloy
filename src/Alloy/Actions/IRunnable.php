@@ -8,7 +8,7 @@ namespace Alloy\Actions;
  *
  * @package Alloy\Actions
  */
-interface RunnableInterface
+interface IRunnable
 {
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Alloy\Type;
 
-use Alloy\Core\TypeInterface;
+use Alloy\Core\IType;
 
 /**
  * Java & c# style wrapper for PHP strings
@@ -12,7 +12,7 @@ use Alloy\Core\TypeInterface;
  *
  * @package Alloy\Type
  */
-class String implements TypeInterface,\Countable
+class String implements IType,\Countable
 {
     const EMPTYSTRING = '';
     const INTERNAL_ENCODING = 'UTF-8';

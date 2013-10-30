@@ -8,7 +8,7 @@ namespace Alloy\Core;
  *
  * @package Alloy\Core
  */
-interface IDInterface
+interface IID
 {
     /**
      * Returns ID of the object
