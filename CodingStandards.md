@@ -15,6 +15,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119][].
 
+[RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 
 1. General
 ----------
@@ -48,12 +49,20 @@ The PHP constants `true`, `false`, and `null` MUST be in lower case.
 
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 
+### 1.6. Commenting
+
+All classes, interfaces and methods MUST have valid phpDoc comment
+
+
 2. Interfaces
 -------------
 
 ### 2.1 Naming
 
 All interface names MUST begin with `I`, and MUST NOT contain `Interface` suffix
+
 Example:
-`ISerializeable` - right way
-`SerializeableInterface` - wrong
+```php
+interface ISerializeable {} // OK
+interface SerializeableInterface{} // wrong
+```
