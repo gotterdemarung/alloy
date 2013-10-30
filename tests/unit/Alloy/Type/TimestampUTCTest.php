@@ -32,7 +32,10 @@ class TimestampUTCTest extends AlloyTest
         $this->assertConstruct((float) 12345, '12345');
 
         // PHP Datetime
-        $this->assertConstruct((float) 1382216400, new \DateTime('2013-10-20'));
+        $this->assertConstruct((float) 1382263994, new \DateTime('2013-10-20 12:13:14', new \DateTimeZone('Europe/Paris')));
+        $this->assertConstruct((float) 1382220000, new \DateTime('2013-10-20', new \DateTimeZone('Europe/Paris')));
+        $this->assertConstruct((float) 1382216400, new \DateTime('2013-10-20', new \DateTimeZone('Europe/Kiev')));
+        $this->assertConstruct((float) 1382227200, new \DateTime('2013-10-20', new \DateTimeZone('UTC')));
 
         // Self
         $this->assertConstruct(12.34, new TimestampUTC(12.34));
