@@ -10,7 +10,6 @@ use Alloy\Core\IType;
  * Class Timestamp
  * High precision unix timestamp
  *
- * @todo tests needed
  * @package Alloy\Type
  */
 class Timestamp implements IType, IToJSON
@@ -70,7 +69,7 @@ class Timestamp implements IType, IToJSON
      * Constructor
      *
      * @param int|float|string|\DateTime|Timestamp $value
-     * @param int|null                                    $precision
+     * @param int|null                             $precision
      *
      * @throws \InvalidArgumentException
      */
@@ -154,7 +153,7 @@ class Timestamp implements IType, IToJSON
      * @param string $format http://php.net/manual/en/function.date.php
      * @return bool|string
      */
-    public function format( $format )
+    public function format($format)
     {
         return date($format, $this->getUnixTimestamp());
     }

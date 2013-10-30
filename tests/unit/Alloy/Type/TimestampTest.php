@@ -61,5 +61,99 @@ class TimestampTest extends AlloyTest
         $this->assertFalse($x->equals(12));
     }
 
+    public function testFormat()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame('1973-11-29 23:33:09', $x->format('Y-m-d H:i:s'));
+        $this->assertSame('29.11.73', $x->format('d.m.y'));
+    }
+
+    public function testDayBegin()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame(123372000, $x->getDayBegin()->getInt());
+    }
+
+    public function testDayEnd()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame(123458399, $x->getDayEnd()->getInt());
+    }
+
+    public function testGetFloat()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame(123456789.76, $x->getFloat());
+    }
+
+    public function testGetInt()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame(123456789, $x->getInt());
+    }
+
+    public function testGetMySQLDate()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame('1973-11-29', $x->getMySQLDate());
+    }
+
+    public function testGetMySQLDateTime()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame('1973-11-29 23:33:09', $x->getMySQLDateTime());
+    }
+
+    public function testGetUnixTimestamp()
+    {
+        $x = new Timestamp(123456789.76, 2);
+        $this->assertSame(123456789, $x->getUnixTimestamp());
+    }
+
+    public function testGetString()
+    {
+        $x = new Timestamp(12.76345);
+        $this->assertSame('12.8', $x->getString(1));
+        $this->assertSame('12.763450', $x->getString());
+        $this->assertSame('12.763450000', $x->getString(9));
+    }
+
+    public function testBiggerThan()
+    {
+        $x = new Timestamp(12.76345);
+        $this->assertTrue($x->isBiggerThen(10));
+        $this->assertFalse($x->isBiggerThen(13));
+    }
+
+    public function testLesserThan()
+    {
+        $x = new Timestamp(12.76345);
+        $this->assertTrue($x->isLesserThen(20));
+        $this->assertFalse($x->isLesserThen(10));
+    }
+
+    public function testToJSON()
+    {
+        $x = new Timestamp(12.76345);
+        $this->assertSame('12.763450', $x->toJSON());
+    }
+
+    public function testStaticNow()
+    {
+        $start = microtime(true);
+        $x = Timestamp::now()->getFloat();
+        $this->assertGreaterThanOrEqual($start, $x);
+        $this->assertLessThanOrEqual(microtime(true), $x);
+    }
+
+    public function testStaticValid()
+    {
+        $this->assertTrue(Timestamp::isValidStringTimeStamp('12345'));
+        $this->assertTrue(Timestamp::isValidStringTimeStamp('12345.33'));
+        $this->assertTrue(Timestamp::isValidStringTimeStamp('-12345'));
+
+        $this->assertFalse(Timestamp::isValidStringTimeStamp('12345,33'));
+        $this->assertFalse(Timestamp::isValidStringTimeStamp(PHP_INT_MAX . '1'));
+    }
 
 }
