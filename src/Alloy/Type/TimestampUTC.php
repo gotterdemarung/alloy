@@ -7,12 +7,13 @@ use Alloy\Core\IToJSON;
 use Alloy\Core\IType;
 
 /**
- * Class Timestamp
+ * Class TimestampUTC
  * High precision unix timestamp
+ * Works on UTC time
  *
  * @package Alloy\Type
  */
-class Timestamp implements IType, IToJSON
+class TimestampUTC implements IType, IToJSON
 {
     /**
      * Value of timestamp
@@ -28,6 +29,34 @@ class Timestamp implements IType, IToJSON
      * @var int
      */
     protected $_precision;
+
+    /**
+     * Constructs new TimestampUTC object on provided values
+     *
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @param int $month
+     * @param int $day
+     * @param int $year
+     * @return TimestampUTC
+     */
+    static public function mkTime(
+        $hour,
+        $minute,
+        $second,
+        $month,
+        $day,
+        $year
+    )
+    {
+        $reset = date_default_timezone_get();
+        date_default_timezone_set('UTC');
+        $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
+        date_default_timezone_set($reset);
+
+        return new TimestampUTC($timestamp);
+    }
 
     /**
      * Return true if provided string is valid timestamp value
@@ -58,7 +87,7 @@ class Timestamp implements IType, IToJSON
      * Returns current time
      *
      * @param int $precision
-     * @return Timestamp
+     * @return TimestampUTC
      */
     static public function now($precision = 6)
     {
@@ -68,7 +97,7 @@ class Timestamp implements IType, IToJSON
     /**
      * Constructor
      *
-     * @param int|float|string|\DateTime|Timestamp $value
+     * @param int|float|string|\DateTime|TimestampUTC $value
      * @param int|null                             $precision
      *
      * @throws \InvalidArgumentException
@@ -93,7 +122,7 @@ class Timestamp implements IType, IToJSON
         } else if (is_float($value) || is_double($value) || is_int($value)) {
             // Plain numeric timestamp
             $this->_value = (float) $value;
-        } else if ($value instanceof Timestamp) {
+        } else if ($value instanceof TimestampUTC) {
             // Own type
             $this->_value = $value->_value;
             if ($precision === null) {
@@ -108,7 +137,10 @@ class Timestamp implements IType, IToJSON
             $this->_value = (float) $value;
         } else {
             // strtotime
+            $reset = date_default_timezone_get();
+            date_default_timezone_set('UTC');
             $this->_value = (float) strtotime($value);
+            date_default_timezone_set($reset);
         }
 
         $this->_trim();
@@ -140,8 +172,8 @@ class Timestamp implements IType, IToJSON
         if ($object === null) {
             return false;
         }
-        if (!($object instanceof Timestamp)) {
-            $object = new Timestamp($object);
+        if (!($object instanceof TimestampUTC)) {
+            $object = new TimestampUTC($object);
         }
 
         return $this->_value == $object->_value;
@@ -155,44 +187,45 @@ class Timestamp implements IType, IToJSON
      */
     public function format($format)
     {
-        return date($format, $this->getUnixTimestamp());
+        $reset = date_default_timezone_get();
+        date_default_timezone_set('UTC');
+        $string = date($format, $this->getUnixTimestamp());
+        date_default_timezone_set($reset);
+
+        return $string;
     }
 
     /**
      * Returns new TimestampPrecise, representing begin of day
      *
-     * @return Timestamp
+     * @return TimestampUTC
      */
     public function getDayBegin()
     {
-        return new self(
-            mktime(
-                0,
-                0,
-                0,
-                $this->format('m'),
-                $this->format('d'),
-                $this->format('Y')
-            )
+        return self::mkTime(
+            0,
+            0,
+            0,
+            $this->format('m'),
+            $this->format('d'),
+            $this->format('Y')
         );
     }
 
     /**
      * Returns new TimestampPrecise, representing end of day
      *
-     * @return Timestamp
+     * @return TimestampUTC
      */
     public function getDayEnd()
     {
-        return new self(
-            mktime(
-                23,
-                59,
-                59,
-                $this->format('m'),
-                $this->format('d'),
-                $this->format('Y')
-            )
+        return self::mkTime(
+            23,
+            59,
+            59,
+            $this->format('m'),
+            $this->format('d'),
+            $this->format('Y')
         );
     }
 
@@ -280,7 +313,7 @@ class Timestamp implements IType, IToJSON
     /**
      * Returns true if current object timestamp bigger then provided
      *
-     * @param mixed|Timestamp $object
+     * @param mixed|TimestampUTC $object
      * @return bool
      */
     public function isBiggerThen($object)
@@ -292,7 +325,7 @@ class Timestamp implements IType, IToJSON
     /**
      * Returns true this current object timestamp lesser then provided
      *
-     * @param mixed|Timestamp $object
+     * @param mixed|TimestampUTC $object
      * @return bool
      */
     public function isLesserThen($object)
