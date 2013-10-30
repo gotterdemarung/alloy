@@ -6,7 +6,7 @@ tools:
     php_cpd:
         command: phpcpd
         filter:
-            excluded_paths: [vendor, tests]
+            excluded_paths: ["vendor", "tests"]
 
     php_code_sniffer:
         extensions:
@@ -18,6 +18,7 @@ tools:
             standard: Zend
         filter:
             paths: ["src"]
+            excluded_paths: ["vendor", "tests"]
 
     php_code_coverage:
         test_command: phpunit -c tests/phpunit.xml
@@ -25,6 +26,8 @@ tools:
     php_mess_detector:
         filter:
             paths: ["src"]
+            excluded_paths: ["vendor", "tests"]
     php_analyzer:
         filter:
             paths: ["src"]
+            excluded_paths: ["vendor", "tests"]
