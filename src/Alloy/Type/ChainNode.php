@@ -5,6 +5,7 @@ namespace Alloy\Type;
 use Alloy\Core\ICollection;
 use Alloy\Core\IType;
 use Alloy\Util\EqualityValidator;
+use Traversable;
 
 /***
  * Class Node
@@ -18,7 +19,7 @@ use Alloy\Util\EqualityValidator;
  * @todo unit testing
  * @package Alloy\Type
  */
-class ChainNode implements ICollection, IType
+class ChainNode implements \IteratorAggregate, ICollection, IType
 {
     /**
      * @var mixed
@@ -102,6 +103,15 @@ class ChainNode implements ICollection, IType
 
         return (int) $this->_data;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->_data);
+    }
+
 
     /**
      * Returns integer value
