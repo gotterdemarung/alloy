@@ -217,7 +217,7 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
         }
 
         foreach ($this->_data as $v) {
-            if ($$this->_eqValidator->areEqual($v, $value)) {
+            if ($this->_eqValidator->areEqual($v, $value)) {
                 return true;
             }
         }
@@ -246,7 +246,7 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
         if (!$this->isArrayAccess()) {
             return false;
         }
-        return isset($this->_data);
+        return isset($this->_data[$offset]);
     }
 
     /**
@@ -258,7 +258,15 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
         if (!$this->isArrayAccess() || !$this->offsetExists($offset)) {
             return new ChainNode(null);
         }
-        return $this->_data[$offset];
+        if ($this->_data[$offset] instanceof ChainNode) {
+            return $this->_data[$offset];
+        } else {
+            // Wrapping
+            return $this->_data[$offset] = new ChainNode(
+                $this->_data[$offset],
+                $this->_eqValidator
+            );
+        }
     }
 
     /**
