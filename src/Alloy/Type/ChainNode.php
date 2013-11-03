@@ -18,7 +18,7 @@ use Alloy\Util\EqualityValidator;
  * @todo unit testing
  * @package Alloy\Type
  */
-class Node implements ICollection, IType
+class ChainNode implements ICollection, IType
 {
     /**
      * @var mixed
@@ -49,7 +49,7 @@ class Node implements ICollection, IType
      * Magic alias for offsetGet
      *
      * @param string $name
-     * @return Node
+     * @return ChainNode
      */
     public function __get($name)
     {
@@ -220,7 +220,7 @@ class Node implements ICollection, IType
      */
     public function equals($object)
     {
-        if ($object instanceof Node) {
+        if ($object instanceof ChainNode) {
             return $this->_eqValidator->areEqual($this->_data, $object->_data);
         }
 
@@ -241,12 +241,12 @@ class Node implements ICollection, IType
 
     /**
      * {@inheritdoc}
-     * @return Node
+     * @return ChainNode
      */
     public function offsetGet($offset)
     {
         if (!$this->isArrayAccess() || !$this->offsetExists($offset)) {
-            return new Node(null);
+            return new ChainNode(null);
         }
         return $this->_data[$offset];
     }
