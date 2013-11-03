@@ -256,6 +256,32 @@ class ChainNodeTest extends AlloyTest
         $this->assertSame(3, $x['x']->getInt());
     }
 
+    public function testTree()
+    {
+        $tree = new ChainNode(array(
+            'base' => array(
+                'foo' => 'bar',
+                'child' => array(
+                    'one' => 1,
+                    'two' => 2,
+                    'sub' => array(
+                        'three' => 3,
+                        'four' => 4
+                    )
+                )
+            )
+        ));
+
+        $this->assertCount(1, $tree);
+        $this->assertTrue($tree->isTraversable());
+        $this->assertTrue($tree->base->isTraversable());
+        $this->assertSame('bar', $tree->base->foo->getString());
+        $this->assertSame(3, $tree->base->child->sub->three->getInt());
+        $this->assertSame(4, $tree->path('base.child.sub.four')->getInt());
+        $this->assertTrue($tree->base->notExists->isEmpty());
+        $this->assertTrue($tree->path('base.notvalid')->isNull());
+    }
+
 
 
 }

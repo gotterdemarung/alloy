@@ -16,7 +16,6 @@ use Traversable;
  *
  * Common usage - configuration files
  *
- * @todo unit testing
  * @package Alloy\Type
  */
 class ChainNode implements \IteratorAggregate, ICollection, IType
@@ -296,5 +295,27 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
         }
     }
 
+    /**
+     * Returns ChainNode in requested path
+     * Path delimiter is . (dot)
+     * Example:
+     * settings.database.username
+     *
+     * @param string $path
+     *
+     * @return ChainNode
+     */
+    public function path($path)
+    {
+        if (strpos($path, '.') === false) {
+            return $this->offsetGet($path);
+        }
+        $path = explode('.', $path);
+        return $this->offsetGet(
+            $path[0])->path(
+                implode('.', array_slice($path, 1)
+            )
+        );
+    }
 
 } 
