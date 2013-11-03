@@ -11,7 +11,7 @@ interface IObservable
     /**
      * Adds new observer
      * @param IObserver $observer
-     * @return mixed
+     * @return void
      */
     public function addObserver(IObserver $observer);
 
