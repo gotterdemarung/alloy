@@ -162,7 +162,8 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
         if ($this->isNull() || is_object($this->_data)) {
             return false;
         }
-        return is_int($this->_data) || $this->_data === (string) intval($this->_data);
+        return is_int($this->_data)
+            || $this->_data === (string) intval($this->_data);
     }
 
     /**
@@ -211,7 +212,9 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
             return true;
         }
 
-        if (!is_array($this->_data) && !($this->_data instanceof \Traversable)) {
+        if (!is_array($this->_data)
+            && !($this->_data instanceof \Traversable)
+        ) {
             return false;
         }
 
@@ -311,10 +314,8 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
             return $this->offsetGet($path);
         }
         $path = explode('.', $path);
-        return $this->offsetGet(
-            $path[0])->path(
-                implode('.', array_slice($path, 1)
-            )
+        return $this->offsetGet($path[0])->path(
+            implode('.', array_slice($path, 1))
         );
     }
 
