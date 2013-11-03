@@ -45,6 +45,10 @@ abstract class Observable implements IObservable
     {
         if ($tag === null) {
             $tag = get_class($this);
+            if (strpos($tag, '\\') !== false) {
+                $tag = explode('\\', $tag);
+                $tag = $tag[count($tag) - 1];
+            }
         }
         $this->notify(new Packet($message, $tag, Packet::LEVEL_NOTICE));
     }
