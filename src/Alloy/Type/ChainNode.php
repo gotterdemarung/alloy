@@ -108,6 +108,19 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
      */
     public function getIterator()
     {
+        // We need to wrap everything before iterating
+        if ($this->isTraversable()) {
+            foreach ($this->_data as $key => $value) {
+                if ($value instanceof ChainNode) {
+                    continue;
+                } else {
+                    $this->_data[$key] = new ChainNode(
+                        $value,
+                        $this->_eqValidator
+                    );
+                }
+            }
+        }
         return new \ArrayIterator($this->_data);
     }
 
