@@ -120,8 +120,10 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
                     );
                 }
             }
+            return new \ArrayIterator($this->_data);
+        } else {
+            return new \EmptyIterator();
         }
-        return new \ArrayIterator($this->_data);
     }
 
 
