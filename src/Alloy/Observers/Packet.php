@@ -50,13 +50,23 @@ class Packet
      * @param string $tag
      * @param int    $level
      */
-    public function __construct($message, $tag = null, $level = self::LEVEL_NOTICE)
+    public function __construct(
+        $message,
+        $tag = null,
+        $level = self::LEVEL_NOTICE
+    )
     {
         $this->_time = microtime(true);
         $this->_message = $message;
         $this->_tag = $tag;
         $this->_level = $level;
-        if ($message instanceof \Exception && ($level === null || ($level === self::LEVEL_NOTICE || $level === self::LEVEL_DEBUG))) {
+        if ($message instanceof \Exception
+            && (
+                $level === null
+                || $level === self::LEVEL_NOTICE
+                || $level === self::LEVEL_DEBUG
+            )
+        ) {
             // Raising to error
             $this->_level = self::LEVEL_ERROR;
         }

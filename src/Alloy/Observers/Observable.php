@@ -45,7 +45,7 @@ abstract class Observable implements IObservable
             return;
         }
 
-        foreach($this->_observers as $observer) {
+        foreach ($this->_observers as $observer) {
             $observer->handlePacket($packet);
         }
     }
@@ -57,7 +57,8 @@ abstract class Observable implements IObservable
      * @param string $tag
      * @throws \Exception
      */
-    protected function _oRethrow($exception, $tag = null) {
+    protected function _oRethrow($exception, $tag = null)
+    {
         if (count($this->_observers) === 0) {
             throw $exception;
         }

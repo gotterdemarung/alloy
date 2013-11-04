@@ -111,11 +111,16 @@ class HTTPClient implements IObservable
      * @param null $requestOptions
      *
      * @return string
+     *
+     * @throws \Exception
      */
     public function get($url, $requestOptions = null)
     {
         // Checking cache
-        if ($this->_cache !== null && ($cached = $this->_cache[$url]) !== false) {
+        if (
+            $this->_cache !== null
+            && ($cached = $this->_cache[$url]) !== false
+        ) {
             // Cache hit
             $this->_notice("Cache hit on {$url}");
             $this->_notice('Received ' . strlen($cached) . ' bytes');
