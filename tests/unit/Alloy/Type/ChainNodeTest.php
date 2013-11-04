@@ -76,7 +76,7 @@ class ChainNodeTest extends AlloyTest
         $x = new ChainNode(array(1,2,4));
         $sum = 0;
         foreach ($x as $row) {
-            $sum += $row;
+            $sum += $row->getInt();
         }
         $this->assertSame(7, $sum);
     }
