@@ -12,8 +12,8 @@ interface IHandler
     /**
      * Receives data and handles it
      *
-     * @param mixed $x Data to handle
+     * @param mixed $data Data to handle
      * @return mixed
      */
-    public function handle($x);
+    public function handle($data);
 }

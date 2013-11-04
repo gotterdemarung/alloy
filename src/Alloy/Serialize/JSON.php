@@ -44,8 +44,8 @@ class JSON implements ISerializer
 
         return preg_replace_callback(
             '/((\\\u[01-9a-fA-F]{4})+)/',
-            function($m){
-                return json_decode('"' . $m[1] .  '"');
+            function($char){
+                return json_decode('"' . $char[1] .  '"');
             },
             $string
         );

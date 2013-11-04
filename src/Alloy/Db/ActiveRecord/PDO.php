@@ -68,15 +68,15 @@ class PDO implements \IteratorAggregate, IActiveRecord
         $tableName,
         $idFieldName = 'id')
     {
-        /** @var PDO $x */
-        $x = new static();
-        $x->_id = ID::getNew();
-        $x->_data = array();
-        $x->_db = $pdo;
-        $x->_tableName = $tableName;
-        $x->_idFieldName = $idFieldName;
+        /** @var PDO $object */
+        $object = new static();
+        $object->_id = ID::getNew();
+        $object->_data = array();
+        $object->_db = $pdo;
+        $object->_tableName = $tableName;
+        $object->_idFieldName = $idFieldName;
 
-        return $x;
+        return $object;
     }
 
     /**
@@ -103,18 +103,18 @@ class PDO implements \IteratorAggregate, IActiveRecord
             throw new \InvalidArgumentException('Invalid ID');
         }
 
-        /** @var PDO $x */
-        $x = new static();
-        $x->_id = ID::getEmpty();
-        $x->_db = $pdo;
-        $x->_tableName = $tableName;
-        $x->_idFieldName = $idFieldName;
-        $x->_data = null;
+        /** @var PDO $object */
+        $object = new static();
+        $object->_id = ID::getEmpty();
+        $object->_db = $pdo;
+        $object->_tableName = $tableName;
+        $object->_idFieldName = $idFieldName;
+        $object->_data = null;
         // Reading data from MySQLi
-        $stmtSQL = 'SELECT * FROM `' . $x->_tableName . '` WHERE'
-            . ' `' . $x->_idFieldName . '` = ? '
+        $stmtSQL = 'SELECT * FROM `' . $object->_tableName . '` WHERE'
+            . ' `' . $object->_idFieldName . '` = ? '
             . ' LIMIT 1';
-        $stmt = $x->_db->prepare($stmtSQL);
+        $stmt = $object->_db->prepare($stmtSQL);
         if ($stmt === false) {
             throw new \Exception('Bad schema or id key name');
         }
@@ -123,8 +123,8 @@ class PDO implements \IteratorAggregate, IActiveRecord
             if ($stmt->execute()) {
                 $data = $stmt->fetch(Provider::FETCH_ASSOC);
                 if (!empty($data)) {
-                    $x->_id = $id;
-                    $x->_data = $data;
+                    $object->_id = $id;
+                    $object->_data = $data;
                 }
                 $stmt->closeCursor();
             }
@@ -132,7 +132,7 @@ class PDO implements \IteratorAggregate, IActiveRecord
             // Ignoring exception
         }
 
-        return $x;
+        return $object;
     }
 
     /**

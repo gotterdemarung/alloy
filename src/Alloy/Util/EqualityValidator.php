@@ -31,55 +31,55 @@ class EqualityValidator implements IEquals
     /**
      * Returns true if validators are equal
      *
-     * @param mixed $o
+     * @param mixed $object
      * @return bool
      */
-    public function equals($o)
+    public function equals($object)
     {
-        return $o !== null
-            && is_object($o)
-            && $o instanceof EqualityValidator
-            && $o->_strictPrimitives === $this->_strictPrimitives;
+        return $object !== null
+            && is_object($object)
+            && $object instanceof EqualityValidator
+            && $object->_strictPrimitives === $this->_strictPrimitives;
     }
 
     /**
      * Returns true only if all provided to function
      * elements equals to each other
      *
-     * @param mixed $a
-     * @param mixed $b
+     * @param mixed $first
+     * @param mixed $second
      *
      * @return bool
      */
-    public function areEqual($a, $b)
+    public function areEqual($first, $second)
     {
-        if ($a === null && $b === null) {
+        if ($first === null && $second === null) {
             // Nulls are equal
             return true;
         }
-        if ($a === null || $b === null) {
+        if ($first === null || $second === null) {
             // One of arguments is null
             return false;
         }
 
-        if (is_object($a) && $a instanceof IEquals) {
-            return $a->equals($b);
+        if (is_object($first) && $first instanceof IEquals) {
+            return $first->equals($second);
         }
-        if (is_object($b) && $b instanceof IEquals) {
-            return $b->equals($a);
+        if (is_object($second) && $second instanceof IEquals) {
+            return $second->equals($first);
         }
 
-        if (is_array($a) && !is_array($b)) {
+        if (is_array($first) && !is_array($second)) {
             return false;
         }
-        if (is_array($b) && !is_array($a)) {
+        if (is_array($second) && !is_array($first)) {
             return false;
         }
 
         if ($this->_strictPrimitives) {
-            return $a === $b;
+            return $first === $second;
         } else {
-            return $a == $b;
+            return $first == $second;
         }
     }
 

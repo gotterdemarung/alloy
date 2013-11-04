@@ -24,7 +24,7 @@ class Configurator
     /**
      * @var bool
      */
-    protected $_throwExceptionsOnMiss;
+    protected $_throwOnMiss;
 
     /**
      * Constructor
@@ -35,7 +35,7 @@ class Configurator
     public function __construct($strict = true, $settersFirst = true)
     {
         $this->_settersFirst = (bool) $settersFirst;
-        $this->_throwExceptionsOnMiss = (bool) $strict;
+        $this->_throwOnMiss = (bool) $strict;
     }
 
     /**
@@ -76,7 +76,7 @@ class Configurator
         }
         $config = $this->_applyOnSetters($object, $config);
         $config = $this->_applyOnProperties($object, $config);
-        if ($this->_throwExceptionsOnMiss && !$config->isEmpty()) {
+        if ($this->_throwOnMiss && !$config->isEmpty()) {
             throw new \BadMethodCallException(
                 'Following properties presents in config'
                 . ', but are missing in object: '
@@ -103,7 +103,7 @@ class Configurator
         }
         $config = $this->_applyOnProperties($object, $config);
         $config = $this->_applyOnSetters($object, $config);
-        if ($this->_throwExceptionsOnMiss && !$config->isEmpty()) {
+        if ($this->_throwOnMiss && !$config->isEmpty()) {
             throw new \BadMethodCallException(
                 'Following properties presents in config'
                 . ', but are missing in object: '

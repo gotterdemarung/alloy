@@ -136,21 +136,21 @@ class Randomizer implements IRandom
      * Returns a random element from collection
      *
      * @param array|\Iterator $collection            collection of Items
-     * @param bool            $extractValuesForArray
+     * @param bool            $extractForArray
      *
      * @return null|mixed
      *
      * @throws \InvalidArgumentException if provided collection is not array
      * or Iterator
      */
-    public function nextItem($collection, $extractValuesForArray = true)
+    public function nextItem($collection, $extractForArray = true)
     {
         if (empty($collection)) {
             return null;
         }
         $values = array();
         if (is_array($collection)) {
-            if (!$extractValuesForArray) {
+            if (!$extractForArray) {
                 // We assuming, that $array is common linear array
                 $values = $collection;
             } else {
