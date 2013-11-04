@@ -13,3 +13,12 @@ echo
 echo "Updating composer"
 echo "================="
 composer update
+
+echo
+echo "Making symlinks to vendor/bin"
+echo "============================="
+ln -fs ../vendor/bin/phpcs bin/phpcs
+ln -fs ../vendor/bin/phpmd bin/phpmd
+ln -fs ../vendor/bin/phpunit bin/phpunit
+echo "Done: phpcs, phpmd, phpunit"
+echo

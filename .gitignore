@@ -1,3 +1,6 @@
 /.idea/
 /vendor/
+/bin/phpcs
+/bin/phpmd
+/bin/phpunit
 composer.lock
