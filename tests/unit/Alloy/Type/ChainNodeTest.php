@@ -76,6 +76,7 @@ class ChainNodeTest extends AlloyTest
         $x = new ChainNode(array(1,2,4));
         $sum = 0;
         foreach ($x as $row) {
+            /** @var ChainNode */
             $sum += $row->getInt();
         }
         $this->assertSame(7, $sum);
@@ -133,6 +134,20 @@ class ChainNodeTest extends AlloyTest
         $this->assertTrue($x->isArrayAccess());
         $x = new ChainNode(new ChainNode());
         $this->assertTrue($x->isArrayAccess());
+    }
+
+    public function testIsBool()
+    {
+        $x = new ChainNode();
+        $this->assertFalse($x->isBool());
+        $x = new ChainNode(0);
+        $this->assertFalse($x->isBool());
+        $x = new ChainNode(1);
+        $this->assertFalse($x->isBool());
+        $x = new ChainNode(true);
+        $this->assertTrue($x->isBool());
+        $x = new ChainNode(false);
+        $this->assertTrue($x->isBool());
     }
 
     public function testIsInt()
@@ -202,6 +217,22 @@ class ChainNodeTest extends AlloyTest
         $this->assertFalse($x->isTraversable());
         $x = new ChainNode('bar');
         $this->assertFalse($x->isTraversable());
+    }
+
+    public function testIsTrue()
+    {
+        $x = new ChainNode(1);
+        $this->assertFalse($x->isTrue());
+        $x = new ChainNode(0);
+        $this->assertFalse($x->isTrue());
+        $x = new ChainNode(false);
+        $this->assertFalse($x->isTrue());
+        $x = new ChainNode(null);
+        $this->assertFalse($x->isTrue());
+        $x = new ChainNode('true');
+        $this->assertFalse($x->isTrue());
+        $x = new ChainNode(true);
+        $this->assertTrue($x->isTrue());
     }
 
     public function testContainsValue()

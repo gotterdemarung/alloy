@@ -168,6 +168,16 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
     }
 
     /**
+     * Returns true if current data is boolean
+     *
+     * @return bool
+     */
+    public function isBool()
+    {
+        return !$this->isNull() && is_bool($this->_data);
+    }
+
+    /**
      * Returns true if internal data is int
      *
      * @return bool
@@ -216,6 +226,16 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
         }
 
         return is_array($this->_data) || $this->_data instanceof \Traversable;
+    }
+
+    /**
+     * Returns true if internal data is boolean and true
+     *
+     * @return bool
+     */
+    public function isTrue()
+    {
+        return $this->isBool() && $this->_data === true;
     }
 
     /**
