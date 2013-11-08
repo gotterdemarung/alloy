@@ -75,7 +75,10 @@ class Router extends Observable
             // Regex based routing
             if (!$route->regex->isEmpty()) {
                 // Regex match
-                if (preg_match($route->regex->getString(), $request->getRoutingUri())) {
+                if (preg_match(
+                    $route->regex->getString(),
+                    $request->getRoutingUri()
+                )) {
                     // Found by regex
                     return $route;
                 }
@@ -83,7 +86,7 @@ class Router extends Observable
 
             // Url position based routing
             if (!$route->urlpart->isEmpty()) {
-                foreach($route->urlpart() as $offset => $pattern) {
+                foreach ($route->urlpart() as $offset => $pattern) {
                     if ($request->getUriPart($offset) === $pattern) {
                         return $route;
                     }
