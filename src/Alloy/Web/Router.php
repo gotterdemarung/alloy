@@ -3,8 +3,11 @@
 namespace Alloy\Web;
 
 
+use Alloy\Di\Configurator;
 use Alloy\Observers\Observable;
 use Alloy\Type\ChainNode;
+use Alloy\Web\Exceptions\BadRouterConfig;
+use Alloy\Web\Exceptions\NoRoute;
 
 class Router extends Observable
 {
@@ -47,11 +50,60 @@ class Router extends Observable
     }
 
     /**
+     * Returns controller for specified request
      *
+     * @param Request $request
+     * @return Controller
+     * @throws Exceptions\BadRouterConfig
+     * @throws Exceptions\NoRoute
      */
-    public function getController()
+    public function getController(Request $request)
     {
+        $route = $this->_getRoute($request);
 
+        // No route (i.e. 404)
+        if ($route === null) {
+            throw new NoRoute();
+        }
+
+        // Controller not set
+        if ($route->controller->isEmpty()) {
+            throw new BadRouterConfig();
+        }
+
+        $className = $route->controller->getString();
+
+        // Controller not exists
+        if (!class_exists($className)) {
+            throw new BadRouterConfig(
+                'Controller ' . $className . ' not found'
+            );
+        }
+
+        // Instantiation
+        try {
+            $ctrl = new $className();
+            if (!$route->di->isEmpty()) {
+                // Dependency injection
+                $cnf = new Configurator();
+                $cnf->apply($ctrl, $route->di);
+            }
+        } catch (\Exception $exception) {
+            throw new BadRouterConfig(
+                'Instantiation error for ' . $className,
+                0,
+                $exception
+            );
+        }
+
+        // Type check
+        if (!$ctrl instanceof Controller) {
+            throw new BadRouterConfig(
+                'Controller ' . $className . ' is not instance of web controller'
+            );
+        }
+
+        return $ctrl;
     }
 
 
