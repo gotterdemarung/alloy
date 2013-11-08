@@ -41,46 +41,35 @@ class Request implements \ArrayAccess
      * List of $_SERVER keys, containing client IP address
      * @var string[]
      */
-    private static $_IPSOURCEPRIORITY = array(
+    private static $_ipPriority = array(
         'REMOTE_ADDR',
         'HTTP_CLIENT_IP',
-        'HTTP_X_FORWARDED_FOR',
-        'HTTP_X_REAL_IP'
+        'HTTP_X_REAL_IP',
+        'HTTP_X_FORWARDED_FOR'
     );
 
     /**
      * Constructor
-     * Inflates and fills all request-specific arguments
+     * Inflates and fills all request-specific arguments if they are
+     * not passed directly due method call
+     *
+     * @param array|null $get
+     * @param array|null $post
+     * @param array|null $cookie
+     * @param array|null $server
      */
-    public function __construct()
+    public function __construct(
+        $get = null,
+        $post = null,
+        $cookie = null,
+        $server = null
+    )
     {
-        // Reading $_GET variables
-        if (isset($_GET) && count($_GET) > 0) {
-            $this->get = new HashMap($_GET);
-        } else {
-            $this->get = new HashMap();
-        }
-
-        // Reading $_POST variables
-        if (isset($_POST) && count($_POST) > 0) {
-            $this->post = new HashMap($_POST);
-        } else {
-            $this->post = new HashMap();
-        }
-
-        // Reading $_COOKIE variables
-        if (isset($_COOKIE) && count($_COOKIE) > 0) {
-            $this->cookie = new HashMap($_COOKIE);
-        } else {
-            $this->cookie = new HashMap();
-        }
-
-        // Reading $_SERVER
-        if (isset($_SERVER) && count($_SERVER) > 0) {
-            $this->server = new HashMap($_SERVER);
-        } else {
-            $this->server = new HashMap();
-        }
+        // Overiding defauls
+        $this->get = new HashMap($get === null ? $_GET : $get);
+        $this->post = new HashMap($post === null ? $_POST : $post);
+        $this->cookie = new HashMap($cookie === null ? $_COOKIE : $cookie);
+        $this->server = new HashMap($server === null ? $_SERVER : $server);
 
         // Splitting
         $effective = $this->getRequestUri();
@@ -111,8 +100,11 @@ class Request implements \ArrayAccess
         }
 
         // server
-        foreach (self::$_IPSOURCEPRIORITY as $ips) {
-            if (isset($this->server[$ips]) && $this->server[$ips] !== '127.0.0.1') {
+        foreach (self::$_ipPriority as $ips) {
+            if (
+                isset($this->server[$ips])
+                && $this->server[$ips] !== '127.0.0.1'
+            ) {
                 return $this->server[$ips];
             }
         }
@@ -149,7 +141,17 @@ class Request implements \ArrayAccess
      */
     public function isMethod($method)
     {
-        return strtolower($method) === strtolower($this->server['REQUEST_METHOD']);
+        if (empty($method)) {
+            return false;
+        }
+
+        $key = 'REQUEST_METHOD';
+
+        if (!isset($this->server[$key])) {
+
+            return strtolower($method) === 'get';
+        }
+        return  strtolower($method) === strtolower($this->server[$key]);
     }
 
     /**
@@ -180,8 +182,10 @@ class Request implements \ArrayAccess
      */
     public function isAjaxXhr()
     {
+        $key = 'HTTP_X_REQUESTED_WITH';
         return $this->isPost()
-            && strtolower($this->server['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+            && isset($this->server[$key])
+            && strtolower($this->server[$key]) === 'xmlhttprequest';
     }
 
     /**
@@ -191,7 +195,8 @@ class Request implements \ArrayAccess
      */
     public function isHttps()
     {
-        return isset($this->server['HTTPS']) && $this->server['HTTPS'] !== 'off';
+        return isset($this->server['HTTPS'])
+            && $this->server['HTTPS'] !== 'off';
     }
 
     /**
@@ -225,7 +230,9 @@ class Request implements \ArrayAccess
      */
     public function getRequestUri()
     {
-        return $this->server['REQUEST_URI'];
+        return isset($this->server['REQUEST_URI'])
+            ? $this->server['REQUEST_URI']
+            : '/';
     }
 
     /**
@@ -236,7 +243,11 @@ class Request implements \ArrayAccess
      */
     public function getUriPart($offset)
     {
-        if (!is_int($offset) || $offset < 0 || $offset >= count($this->_uriParts)) {
+        if (
+            !is_int($offset)
+            || $offset < 0
+            || $offset >= count($this->_uriParts)
+        ) {
             return '';
         }
 
@@ -286,7 +297,9 @@ class Request implements \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        throw new \BadMethodCallException();
+        throw new \BadMethodCallException(
+            "Read-only. Cannot set {$offset} to {$value}"
+        );
     }
 
     /**
@@ -296,6 +309,8 @@ class Request implements \ArrayAccess
      */
     public function offsetUnset($offset)
     {
-        throw new \BadMethodCallException();
+        throw new \BadMethodCallException(
+            "Read-only. Cannot unset {$offset}"
+        );
     }
 }
