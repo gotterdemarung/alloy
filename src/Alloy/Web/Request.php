@@ -6,10 +6,13 @@ use Alloy\Type\HashMap;
 
 /**
  * Objects, incapsulating all request arguments
+ * It has ArrayAccess with next behavior:
+ * * on int returns uri part
+ * * on string returns post > get
  *
  * @package Alloy\Web
  */
-class Request
+class Request implements \ArrayAccess
 {
     /**
      * @var HashMap
@@ -28,13 +31,21 @@ class Request
      */
     public $server;
     /**
+     * Parts of request uri, splitted by /
+     *
+     * @var string[]
+     */
+    private $_uriParts;
+
+    /**
      * List of $_SERVER keys, containing client IP address
      * @var string[]
      */
     private static $_IPSOURCEPRIORITY = array(
         'REMOTE_ADDR',
         'HTTP_CLIENT_IP',
-        'HTTP_X_FORWARDED_FOR'
+        'HTTP_X_FORWARDED_FOR',
+        'HTTP_X_REAL_IP'
     );
 
     /**
@@ -70,6 +81,16 @@ class Request
         } else {
             $this->server = new HashMap();
         }
+
+        // Splitting
+        $effective = $this->getRequestUri();
+        if (($offset = strpos($effective, '?')) > 0) {
+            $effective = substr($effective, 0, $offset);
+        }
+        if (($offset = strpos($effective, '#')) > 0) {
+            $effective = substr($effective, 0, $offset);
+        }
+        $this->_uriParts = explode('/', $effective);
     }
 
     /**
@@ -80,11 +101,11 @@ class Request
     public function getIP()
     {
         // environment
-        $envvar = getenv('HTTP_X_FORWARDED_FOR');
+        $envvar = getenv('HTTP_CLIENT_IP');
         if (!empty($envvar) && $envvar !== '127.0.0.1') {
             return $envvar;
         }
-        $envvar = getenv('HTTP_CLIENT_IP');
+        $envvar = getenv('HTTP_X_FORWARDED_FOR');
         if (!empty($envvar) && $envvar !== '127.0.0.1') {
             return $envvar;
         }
@@ -157,10 +178,124 @@ class Request
      *
      * @return bool
      */
-    public function isAjaxXHR()
+    public function isAjaxXhr()
     {
         return $this->isPost()
             && strtolower($this->server['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
 
+    /**
+     * Returns true if current request is HTTPS
+     *
+     * @return bool
+     */
+    public function isHttps()
+    {
+        return isset($this->server['HTTPS']) && $this->server['HTTPS'] !== 'off';
+    }
+
+    /**
+     * The url, used for routing
+     *
+     * @return string
+     */
+    public function getRoutingUri()
+    {
+        return $this->getFullRequestUri();
+    }
+
+    /**
+     * Returns full url of current request
+     *
+     * @return string
+     */
+    public function getFullRequestUri()
+    {
+        return 'http'
+            . ($this->isHttps() ? 's' : '')
+            . '://'
+            . $this->server['HTTP_HOST']
+            . $this->getRequestUri();
+    }
+
+    /**
+     * Returns request uri
+     *
+     * @return mixed
+     */
+    public function getRequestUri()
+    {
+        return $this->server['REQUEST_URI'];
+    }
+
+    /**
+     * Returns uri part and empty string on miss
+     *
+     * @param int $offset
+     * @return string
+     */
+    public function getUriPart($offset)
+    {
+        if (!is_int($offset) || $offset < 0 || $offset >= count($this->_uriParts)) {
+            return '';
+        }
+
+        return $this->_uriParts[$offset];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetExists($offset)
+    {
+        if (is_int($offset)) {
+            return $offset >= 0 && $offset < count($this->_uriParts);
+        }
+        if (is_object($offset)) {
+            return false;
+        }
+
+        return isset($this->post[$offset])
+        || isset($this->get[$offset]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetGet($offset)
+    {
+        if (is_int($offset)) {
+            return $this->getUriPart($offset);
+        }
+
+        if (isset($this->post[$offset])) {
+            return $this->post[$offset];
+        }
+
+        if (isset($this->get[$offset])) {
+            return $this->get[$offset];
+        }
+
+        return '';
+    }
+
+    /**
+     * Throws exception always
+     *
+     * @throws \BadMethodCallException
+     */
+    public function offsetSet($offset, $value)
+    {
+        throw new \BadMethodCallException();
+    }
+
+    /**
+     * Throws exception always
+     *
+     * @throws \BadMethodCallException
+     */
+    public function offsetUnset($offset)
+    {
+        throw new \BadMethodCallException();
+    }
 }
