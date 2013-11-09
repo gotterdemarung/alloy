@@ -3,6 +3,7 @@
 namespace Alloy\Web;
 
 
+use Alloy\Actions\IRunnable;
 use Alloy\Core\IObservable;
 use Alloy\Core\IObserver;
 use Alloy\Observers\Packet;
@@ -13,7 +14,7 @@ use Alloy\Observers\Packet;
  *
  * @package Alloy\Web
  */
-class Controller implements IObservable
+abstract class Controller implements IObservable, IRunnable
 {
     /**
      * @var Request
@@ -26,17 +27,14 @@ class Controller implements IObservable
     private $_observers = array();
 
     /**
-     * Constructor
+     * Setter for the request
      *
      * @param Request $request
+     * @return void
      */
-    public function __construct(Request $request = null)
+    public function setRequest(Request $request)
     {
-        if ($request === null) {
-            $this->_request = new Request();
-        } else {
-            $this->_request = $request;
-        }
+        $this->_request = $request;
     }
 
     /**
@@ -75,6 +73,13 @@ class Controller implements IObservable
             $observer->handlePacket($packet);
         }
     }
+
+    /**
+     * Performs an action
+     *
+     * @return void
+     */
+    abstract public function run();
 
 
 } 

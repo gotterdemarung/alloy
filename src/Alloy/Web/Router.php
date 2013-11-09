@@ -66,12 +66,57 @@ class Router extends Observable
             throw new NoRoute();
         }
 
-        // Controller not set
-        if ($route->controller->isEmpty()) {
+        return $this->_getController($route);
+    }
+
+    /**
+     * Returns Controller for 404 errors (NoRoute)
+     *
+     * @return Controller
+     * @throws Exceptions\BadRouterConfig
+     */
+    public function getControllerNoRoute()
+    {
+        $route = $this->_getRoute404();
+        if ($route === null) {
             throw new BadRouterConfig();
         }
 
-        $className = $route->controller->getString();
+        return $this->_getController($route);
+    }
+
+    /**
+     * Returns Controller for unhandled exceptions
+     *
+     * @return Controller
+     * @throws Exceptions\BadRouterConfig
+     */
+    public function getControllerOnError()
+    {
+        $route = $this->_getRouteError();
+
+        if ($route === null) {
+            throw new BadRouterConfig();
+        }
+
+        return $this->_getController($route);
+    }
+
+    /**
+     * Utility function
+     *
+     * @param ChainNode $cnf
+     * @return Controller
+     * @throws Exceptions\BadRouterConfig
+     */
+    protected function _getController(ChainNode $cnf)
+    {
+        // Controller not set
+        if ($cnf->controller->isEmpty()) {
+            throw new BadRouterConfig();
+        }
+
+        $className = $cnf->controller->getString();
 
         // Controller not exists
         if (!class_exists($className)) {
@@ -83,10 +128,10 @@ class Router extends Observable
         // Instantiation
         try {
             $ctrl = new $className();
-            if (!$route->di->isEmpty()) {
+            if (!$cnf->di->isEmpty()) {
                 // Dependency injection
                 $cnf = new Configurator();
-                $cnf->apply($ctrl, $route->di);
+                $cnf->apply($ctrl, $cnf->di);
             }
         } catch (\Exception $exception) {
             throw new BadRouterConfig(
@@ -105,7 +150,6 @@ class Router extends Observable
 
         return $ctrl;
     }
-
 
     /**
      * Utility function
@@ -146,7 +190,29 @@ class Router extends Observable
             }
         }
 
-        return null;
+        // No route found
+        return $this->_getRoute404();
+    }
+
+    /**
+     * Returns 404 route if set
+     *
+     * @return ChainNode|null
+     */
+    protected function _getRoute404()
+    {
+        return isset($this->_routes['404']) ? $this->_routes['404'] : null;
+    }
+
+    /**
+     * Returns error route is set
+     * This route must be used on global-level exceptions
+     *
+     * @return ChainNode|null
+     */
+    protected function _getRouteError()
+    {
+        return isset($this->_routes['error']) ? $this->_routes['error'] : null;
     }
 
 } 
