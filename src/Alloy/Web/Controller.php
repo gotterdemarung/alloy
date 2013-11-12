@@ -2,10 +2,9 @@
 
 namespace Alloy\Web;
 
-
-use Alloy\Actions\IRunnable;
-use Alloy\Core\IObservable;
+use Alloy\Controller as BaseController;
 use Alloy\Core\IObserver;
+use Alloy\Core\IViewElement;
 use Alloy\Observers\Packet;
 
 /**
@@ -14,7 +13,7 @@ use Alloy\Observers\Packet;
  *
  * @package Alloy\Web
  */
-abstract class Controller implements IObservable, IRunnable
+abstract class Controller extends BaseController
 {
     /**
      * @var Request
@@ -22,9 +21,11 @@ abstract class Controller implements IObservable, IRunnable
     private $_request;
 
     /**
-     * @var IObserver[]
+     * Elements to view
+     *
+     * @var IViewElement[]
      */
-    private $_observers = array();
+    protected $_elements = array();
 
     /**
      * Setter for the request
@@ -48,38 +49,20 @@ abstract class Controller implements IObservable, IRunnable
     }
 
     /**
-     * Adds new observer
-     * @param IObserver $observer
-     * @return void
+     * {@inheritdoc}
      */
-    public function addObserver(IObserver $observer)
+    public function show(IViewElement $element)
     {
-        $this->_observers[] = $observer;
+        $this->_elements[] = $element;
     }
 
     /**
-     * Send packet to observers
+     * Returns all view elements for this controller
      *
-     * @param Packet $packet
-     * @return void
+     * @return IViewElement[]
      */
-    public function notify(Packet $packet)
+    public function getViewElements()
     {
-        if (count($this->_observers) === 0) {
-            return;
-        }
-
-        foreach ($this->_observers as $observer) {
-            $observer->handlePacket($packet);
-        }
+        return $this->_elements;
     }
-
-    /**
-     * Performs an action
-     *
-     * @return void
-     */
-    abstract public function run();
-
-
-} 
+}

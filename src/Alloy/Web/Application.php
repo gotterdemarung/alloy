@@ -4,9 +4,12 @@ namespace Alloy\Web;
 
 use Alloy\Actions\IHandler;
 use Alloy\Actions\IRunnable;
+use Alloy\Core\IViewElement;
 use Alloy\Observers\Observable;
 use Alloy\Web\Dict\HTTPStatusCodes;
 use Alloy\Web\Exceptions\NoRoute;
+use Alloy\Web\Headers\AbstractHeader;
+use Alloy\Widgets\Documents\Document;
 
 class Application extends Observable implements IRunnable
 {
@@ -104,6 +107,32 @@ class Application extends Observable implements IRunnable
     protected function _inflateController(Controller $controller)
     {
         $controller->setRequest($this->_request);
+    }
+
+    protected function _buildView(Controller $ctrl)
+    {
+        // Iterating and filling values
+        $headers = array();
+        $document = null;
+        $others = array();
+        foreach($ctrl->getViewElements() as  $element) {
+            if ($element instanceof AbstractHeader) {
+                $headers[$element->getType()] = (string) $element;
+            } else if ($element instanceof Document) {
+                $document = $element;
+            } else {
+                $others[] = $element;
+            }
+        }
+
+        // Headers output
+
+        // If found document - show it
+        if ($document !== null) {
+            echo (string) $document;
+            exit(0);
+        }
+
     }
 
 }

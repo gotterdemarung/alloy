@@ -3,7 +3,9 @@
 namespace Alloy\Widgets;
 
 
-interface IWidget
+use Alloy\Core\IViewElement;
+
+interface IWidget extends IViewElement
 {
     const PLAINTEXT       = 10;
 

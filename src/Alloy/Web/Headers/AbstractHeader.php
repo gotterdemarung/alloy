@@ -2,17 +2,15 @@
 
 namespace Alloy\Web\Headers;
 use Alloy\Core\IToJSON;
-use Alloy\Core\ISendable;
+use Alloy\Core\IViewElement;
 
 /**
  * Base class for all headers
  *
  * @package Alloy\Web\Headers
  */
-abstract class AbstractHeader implements IToJSON, ISendable
+abstract class AbstractHeader implements IToJSON, IViewElement
 {
-    private static $_cliMode = null;
-
     /**
      * Type of header
      *
@@ -49,14 +47,14 @@ abstract class AbstractHeader implements IToJSON, ISendable
         if (empty($object)) {
             return false;
         }
-        if (is_string($object)) {
-            // Stringcast checking
-            return $object === (string) $this;
-        }
         if ($object instanceof AbstractHeader) {
             return
                 $this->_type == $object->_type
                 && $this->getValue() == $object->getValue();
+        }
+        if (is_string($object)) {
+            // Stringcast checking
+            return $object === (string) $this;
         }
         return false;
     }
@@ -100,43 +98,6 @@ abstract class AbstractHeader implements IToJSON, ISendable
             return false;
         }
         return $this->_type == $object->_type;
-    }
-
-    /**
-     * Protected mode to check whenever can we send headers or not
-     * Returns true of script not running in cli mode and headers
-     * was not already sent
-     *
-     * @return bool
-     */
-    protected function _sendAllowed()
-    {
-        if (self::$_cliMode === true) {
-            // No headers in cli mode
-            return false;
-        }
-        if (self::$_cliMode === null) {
-            // Detecting CLI mode
-            self::$_cliMode = (php_sapi_name() == 'cli');
-            return $this->_sendAllowed();
-        }
-
-        return !headers_sent();
-    }
-
-    /**
-     * Sends a header if requirements met
-     *
-     * @return void
-     */
-    public function send()
-    {
-        if ($this->_sendAllowed()
-            && !empty($this->_type)
-            && $this->getValue() != null
-        ) {
-            header((string) $this);
-        }
     }
 
     /**
