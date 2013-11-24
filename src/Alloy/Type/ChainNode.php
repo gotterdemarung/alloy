@@ -128,9 +128,11 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
 
 
     /**
-     * Returns integer value
+     * Returns string value
      * If not applicable, then returns $default, but if
      * default not set, throws exception
+     *
+     * Does not cast to string!
      *
      * @param mixed|null $default
      * @return string
@@ -138,11 +140,34 @@ class ChainNode implements \IteratorAggregate, ICollection, IType
      */
     public function getString($default = null)
     {
-        if (!$this->isString()) {
+        if ($this->isEmpty()) {
             if ($default !== null) {
                 return $default;
             }
-            throw new \LogicException('Node does not contain string value');
+            throw new \LogicException('Node is empty and not contain string');
+        }
+        if (!$this->isString()) {
+            throw new \LogicException('Node value is not a string');
+        }
+
+        return (string) $this->_data;
+    }
+
+    /**
+     * Returns string value and enforces string casting
+     * if internal value is not a string
+     *
+     * @param null $default
+     * @return string
+     * @throws \LogicException
+     */
+    public function castString($default = null)
+    {
+        if ($this->isEmpty()) {
+            if ($default !== null) {
+                return (string) $default;
+            }
+            throw new \LogicException('Node is empty and not contain string');
         }
 
         return (string) $this->_data;
